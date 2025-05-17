@@ -16,6 +16,34 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({
 }) => {
   const [hovered, setHovered] = useState(false);
 
+  // Create unique animation based on author name
+  const getQuoteAnimation = () => {
+    switch (author) {
+      case "Sarah N.":
+        return hovered ? 'scale-110 text-cortex-blue' : '';
+      case "James T.":
+        return hovered ? 'scale-110 rotate-[-5deg] text-cortex-teal' : '';
+      case "Leila K.":
+        return hovered ? 'scale-110 text-cortex-blue translate-x-1' : '';
+      default:
+        return hovered ? 'scale-110' : '';
+    }
+  };
+
+  // Get unique hover effect based on position
+  const getPositionEffect = () => {
+    switch (position) {
+      case "Operations Director, Swift Rentals":
+        return hovered ? 'text-cortex-blue' : '';
+      case "CEO, UrbanRide Solutions":
+        return hovered ? 'text-cortex-teal' : '';
+      case "Ecom Manager, FlowWear":
+        return hovered ? 'text-cortex-blue' : '';
+      default:
+        return hovered ? 'text-cortex-teal' : '';
+    }
+  };
+
   return (
     <div 
       className={`glass-card rounded-lg p-6 opacity-0 animate-fade-in-up transition-all duration-500
@@ -28,7 +56,7 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
     >
-      <div className={`text-cortex-teal text-4xl mb-4 transition-all duration-300 ${hovered ? 'scale-110' : ''}`}>
+      <div className={`text-cortex-teal text-4xl mb-4 transition-all duration-300 ${getQuoteAnimation()}`}>
         "
       </div>
       <p className={`text-cortex-gray mb-6 transition-all duration-300 ${hovered ? 'text-cortex-white' : ''}`}>
@@ -36,7 +64,7 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({
       </p>
       <div className="transition-all duration-300">
         <p className="font-semibold text-cortex-white">{author}</p>
-        <p className={`text-sm text-cortex-gray transition-all duration-300 ${hovered ? 'text-cortex-teal' : ''}`}>
+        <p className={`text-sm text-cortex-gray transition-all duration-300 ${getPositionEffect()}`}>
           {position}
         </p>
       </div>
