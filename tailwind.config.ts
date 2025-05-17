@@ -1,4 +1,3 @@
-
 import type { Config } from "tailwindcss";
 
 export default {
@@ -91,7 +90,7 @@ export default {
         'fade-in-up': {
           '0%': { 
             opacity: '0',
-            transform: 'translateY(20px)'
+            transform: 'translateY(30px)'
           },
           '100%': {
             opacity: '1',
@@ -101,7 +100,7 @@ export default {
         'fade-in-down': {
           '0%': {
             opacity: '0',
-            transform: 'translateY(-20px)'
+            transform: 'translateY(-30px)'
           },
           '100%': {
             opacity: '1',
@@ -111,7 +110,7 @@ export default {
         'fade-in-left': {
           '0%': {
             opacity: '0',
-            transform: 'translateX(-20px)'
+            transform: 'translateX(-30px)'
           },
           '100%': {
             opacity: '1',
@@ -121,7 +120,7 @@ export default {
         'fade-in-right': {
           '0%': {
             opacity: '0',
-            transform: 'translateX(20px)'
+            transform: 'translateX(30px)'
           },
           '100%': {
             opacity: '1',
@@ -169,7 +168,7 @@ export default {
           },
           '100%': {
             opacity: '0',
-            transform: 'translateY(-20px)'
+            transform: 'translateY(-30px)'
           }
         },
         'fade-out-down': {
@@ -179,7 +178,45 @@ export default {
           },
           '100%': {
             opacity: '0',
-            transform: 'translateY(20px)'
+            transform: 'translateY(30px)'
+          }
+        },
+        'fade-out-left': {
+          '0%': { 
+            opacity: '1',
+            transform: 'translateX(0)'
+          },
+          '100%': {
+            opacity: '0',
+            transform: 'translateX(-30px)'
+          }
+        },
+        'fade-out-right': {
+          '0%': { 
+            opacity: '1',
+            transform: 'translateX(0)'
+          },
+          '100%': {
+            opacity: '0',
+            transform: 'translateX(30px)'
+          }
+        },
+        'bounce': {
+          '0%, 100%': { 
+            transform: 'translateY(0)'
+          },
+          '50%': { 
+            transform: 'translateY(-15px)'
+          }
+        },
+        'scale-out': {
+          '0%': {
+            transform: 'scale(1)',
+            opacity: '1'
+          },
+          '100%': {
+            transform: 'scale(0.95)',
+            opacity: '0'
           }
         }
 			},
@@ -187,16 +224,20 @@ export default {
 				'accordion-down': 'accordion-down 0.2s ease-out',
 				'accordion-up': 'accordion-up 0.2s ease-out',
         // Custom animation classes
-        'fade-in-up': 'fade-in-up 0.7s ease-out forwards',
-        'fade-in-down': 'fade-in-down 0.7s ease-out forwards',
-        'fade-in-left': 'fade-in-left 0.7s ease-out forwards',
-        'fade-in-right': 'fade-in-right 0.7s ease-out forwards',
+        'fade-in-up': 'fade-in-up 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+        'fade-in-down': 'fade-in-down 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+        'fade-in-left': 'fade-in-left 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+        'fade-in-right': 'fade-in-right 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards',
         'pulse-glow': 'pulse-glow 2s infinite',
         'float': 'float 6s ease-in-out infinite',
+        'bounce': 'bounce 2s ease-in-out infinite', 
         'spin-slow': 'spin-slow 8s linear infinite',
-        'scale': 'scale 0.5s ease-out forwards',
-        'fade-out-up': 'fade-out-up 0.7s ease-out forwards',
-        'fade-out-down': 'fade-out-down 0.7s ease-out forwards'
+        'scale': 'scale 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+        'fade-out-up': 'fade-out-up 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+        'fade-out-down': 'fade-out-down 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+        'fade-out-left': 'fade-out-left 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+        'fade-out-right': 'fade-out-right 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+        'scale-out': 'scale-out 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards',
 			},
       fontFamily: {
         sans: ['Inter', 'sans-serif'],
