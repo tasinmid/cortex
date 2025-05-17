@@ -44,10 +44,24 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({
     }
   };
 
+  // Get glow color based on author
+  const getGlowColor = () => {
+    switch (author) {
+      case "Sarah N.":
+        return 'shadow-cortex-blue/30';
+      case "James T.":
+        return 'shadow-cortex-teal/30';
+      case "Leila K.":
+        return 'shadow-cortex-blue/30';
+      default:
+        return 'shadow-cortex-teal/20';
+    }
+  };
+
   return (
     <div 
       className={`glass-card rounded-lg p-6 opacity-0 animate-fade-in-up transition-all duration-500
-                ${hovered ? 'shadow-lg shadow-cortex-teal/20 translate-y-[-5px] border-cortex-teal/30' : ''}`}
+                ${hovered ? `shadow-lg ${getGlowColor()} translate-y-[-5px] border-cortex-teal/30` : ''}`}
       style={{ 
         animationDelay: `${delay}ms`, 
         animationFillMode: 'forwards',
