@@ -60,7 +60,7 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({
 
   return (
     <div 
-      className={`glass-card rounded-lg p-6 opacity-0 animate-fade-in-up transition-all duration-500
+      className={`glass-card rounded-lg p-6 opacity-0 animate-fade-in-up transition-all duration-300
                 ${hovered ? `shadow-lg ${getGlowColor()} translate-y-[-5px] border-cortex-teal/30` : ''}`}
       style={{ 
         animationDelay: `${delay}ms`, 
@@ -70,17 +70,19 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
     >
-      <div className={`text-cortex-teal text-4xl mb-4 transition-all duration-300 ${getQuoteAnimation()}`}>
-        "
-      </div>
-      <p className={`text-cortex-gray mb-6 transition-all duration-300 ${hovered ? 'text-cortex-white' : ''}`}>
-        {quote}
-      </p>
-      <div className="transition-all duration-300">
-        <p className="font-semibold text-cortex-white">{author}</p>
-        <p className={`text-sm text-cortex-gray transition-all duration-300 ${getPositionEffect()}`}>
-          {position}
+      <div className={`transition-all duration-300 ${hovered ? 'scale-105' : ''}`}>
+        <div className={`text-cortex-teal text-4xl mb-4 transition-all duration-300 ${getQuoteAnimation()}`}>
+          "
+        </div>
+        <p className={`text-cortex-gray mb-6 transition-all duration-300 ${hovered ? 'text-cortex-white' : ''}`}>
+          {quote}
         </p>
+        <div className="transition-all duration-300">
+          <p className="font-semibold text-cortex-white">{author}</p>
+          <p className={`text-sm text-cortex-gray transition-all duration-300 ${getPositionEffect()}`}>
+            {position}
+          </p>
+        </div>
       </div>
     </div>
   );
