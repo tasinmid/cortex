@@ -1,4 +1,3 @@
-
 import React, { useEffect } from 'react';
 import { useIsMobile } from '@/hooks/use-mobile';
 import Navbar from '@/components/Navbar';
@@ -9,6 +8,7 @@ import ProcessStep from '@/components/ProcessStep';
 import TestimonialCard from '@/components/TestimonialCard';
 import ContactForm from '@/components/ContactForm';
 import Footer from '@/components/Footer';
+import { Separator } from '@/components/ui/separator';
 
 // Import icons
 import { MessageSquare, Zap, Bot, Database, Headphones, BarChart } from 'lucide-react';
@@ -20,6 +20,24 @@ const Index = () => {
     // Update the document title
     document.title = "Cortex.ai - Your AI Automation & Agent Partner";
   }, []);
+  
+  // Section header with animated underline
+  const SectionHeader = ({ title, gradient }: { title: string, gradient: string }) => {
+    return (
+      <div className="relative inline-block group mb-4">
+        <h2 className="text-3xl md:text-4xl font-bold text-shadow">
+          {title.split(' ').map((word, i, arr) => 
+            i === arr.length - 1 ? (
+              <span key={i} className="text-gradient"> {word}</span>
+            ) : (
+              <span key={i}>{word} </span>
+            )
+          )}
+        </h2>
+        <div className="absolute -bottom-2 left-0 w-1/4 h-0.5 bg-cortex-blue transition-all duration-300 group-hover:w-full"></div>
+      </div>
+    );
+  };
   
   const services = [
     {
@@ -151,9 +169,7 @@ const Index = () => {
       <AnimatedSection id="services" className="py-20 bg-cortex-black">
         <div className="container mx-auto px-6">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-shadow">
-              <span className="text-gradient">Services</span> We Offer
-            </h2>
+            <SectionHeader title="Services We Offer" gradient="text-gradient" />
             <p className="text-cortex-gray text-lg max-w-2xl mx-auto">
               Comprehensive AI solutions designed to transform your business operations and customer experience.
             </p>
@@ -177,9 +193,7 @@ const Index = () => {
       <AnimatedSection id="process" className="py-20 bg-gradient-radial from-cortex-navy to-cortex-black">
         <div className="container mx-auto px-6">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-shadow">
-              Our <span className="text-gradient">Process</span>
-            </h2>
+            <SectionHeader title="Our Process" gradient="text-gradient" />
             <p className="text-cortex-gray text-lg max-w-2xl mx-auto">
               A streamlined approach to turning your challenges into AI-powered solutions.
             </p>
@@ -203,9 +217,7 @@ const Index = () => {
       <AnimatedSection id="testimonials" className="py-20 bg-cortex-black">
         <div className="container mx-auto px-6">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-shadow">
-              Client <span className="text-gradient">Testimonials</span>
-            </h2>
+            <SectionHeader title="Client Testimonials" gradient="text-gradient" />
             <p className="text-cortex-gray text-lg max-w-2xl mx-auto">
               Don't just take our word for it — see what our clients have to say about working with Cortex.ai.
             </p>
@@ -230,9 +242,12 @@ const Index = () => {
         <div className="container mx-auto px-6">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             <div>
-              <h2 className="text-3xl md:text-4xl font-bold mb-4 text-shadow opacity-0 animate-fade-in-left" style={{ animationDelay: '100ms', animationFillMode: 'forwards' }}>
-                Talk to Us — <span className="text-gradient">Let's Collaborate</span>
-              </h2>
+              <div className="relative inline-block group mb-4 opacity-0 animate-fade-in-left" style={{ animationDelay: '100ms', animationFillMode: 'forwards' }}>
+                <h2 className="text-3xl md:text-4xl font-bold text-shadow">
+                  Talk to Us — <span className="text-gradient">Let's Collaborate</span>
+                </h2>
+                <div className="absolute -bottom-2 left-0 w-1/4 h-0.5 bg-cortex-teal transition-all duration-300 group-hover:w-full"></div>
+              </div>
               
               <p className="text-cortex-gray text-lg mb-8 opacity-0 animate-fade-in-left" style={{ animationDelay: '200ms', animationFillMode: 'forwards' }}>
                 Ready to transform your business with AI? Get in touch with our team of experts and let's discuss how we can help you achieve your goals.

@@ -61,7 +61,7 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({
   return (
     <div 
       className={`glass-card rounded-lg p-6 opacity-0 animate-fade-in-up transition-all duration-300
-                ${hovered ? `shadow-lg ${getGlowColor()} translate-y-[-5px] border-cortex-teal/30` : ''}`}
+                ${hovered ? `shadow-lg ${getGlowColor()} translate-y-[-5px] border-cortex-teal/30 bg-opacity-40` : ''}`}
       style={{ 
         animationDelay: `${delay}ms`, 
         animationFillMode: 'forwards',

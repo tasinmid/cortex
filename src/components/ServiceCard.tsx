@@ -54,7 +54,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ title, description, icon, del
   return (
     <div 
       className={`glass-card rounded-lg p-6 h-full transition-all duration-300 hover:-translate-y-2 opacity-0 animate-fade-in-up
-                ${hovered ? `shadow-lg ${getGlowColor()} scale-105 border-cortex-blue/30` : ''}`}
+                ${hovered ? `shadow-lg ${getGlowColor()} scale-105 border-cortex-blue/30 bg-opacity-40` : ''}`}
       style={{ 
         animationDelay: `${delay}ms`, 
         animationFillMode: 'forwards',
