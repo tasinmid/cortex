@@ -14,7 +14,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ title, description, icon, del
   // Get color effect based on title for subtle variety
   const getTitleColor = () => {
     switch (title) {
-      case "AI Chatbots":
+      case "Personalized Consultation":
         return hovered ? 'text-cortex-blue' : '';
       case "Channel Automations":
         return hovered ? 'text-cortex-teal' : '';
@@ -34,7 +34,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ title, description, icon, del
   // Get glow color based on title
   const getGlowColor = () => {
     switch (title) {
-      case "AI Chatbots":
+      case "Personalized Consultation":
         return hovered ? 'shadow-cortex-blue/40' : '';
       case "Channel Automations":
         return hovered ? 'shadow-cortex-teal/40' : '';

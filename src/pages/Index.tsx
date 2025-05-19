@@ -1,4 +1,3 @@
-
 import React, { useEffect } from 'react';
 import { useIsMobile } from '@/hooks/use-mobile';
 import Navbar from '@/components/Navbar';
@@ -42,7 +41,7 @@ const Index = () => {
   
   const services = [
     {
-      title: "AI Chatbots",
+      title: "Personalized Consultation",
       description: "Web, WhatsApp, and Instagram chatbots that handle customer inquiries 24/7.",
       icon: <MessageSquare size={48} />
     },
