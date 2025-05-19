@@ -11,7 +11,7 @@ import Footer from '@/components/Footer';
 import { Separator } from '@/components/ui/separator';
 
 // Import icons
-import { MessageSquare, Zap, Bot, Database, BarChart, Wrench } from 'lucide-react';
+import { UserRound, Zap, Bot, Database, BarChart, Wrench } from 'lucide-react';
 
 const Index = () => {
   const isMobile = useIsMobile();
@@ -43,7 +43,7 @@ const Index = () => {
     {
       title: "Personalized Consultation",
       description: "Web, WhatsApp, and Instagram chatbots that handle customer inquiries 24/7.",
-      icon: <MessageSquare size={48} />
+      icon: <UserRound size={48} />
     },
     {
       title: "Channel Automations",
