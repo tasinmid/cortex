@@ -1,6 +1,13 @@
 
 import React, { useState } from 'react';
 import { useToast } from '@/hooks/use-toast';
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 
 const ContactForm: React.FC = () => {
   const { toast } = useToast();
@@ -12,11 +19,18 @@ const ContactForm: React.FC = () => {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData((prev) => ({
       ...prev,
       [name]: value,
+    }));
+  };
+
+  const handleServiceChange = (value: string) => {
+    setFormData((prev) => ({
+      ...prev,
+      service: value,
     }));
   };
 
@@ -72,20 +86,22 @@ const ContactForm: React.FC = () => {
       
       <div className="opacity-0 animate-fade-in-up" style={{ animationDelay: '300ms', animationFillMode: 'forwards' }}>
         <label htmlFor="service" className="block text-cortex-white mb-1">Service Type</label>
-        <select
-          id="service"
-          name="service"
-          required
-          value={formData.service}
-          onChange={handleChange}
-          className="w-full px-4 py-2 bg-cortex-navy bg-opacity-30 rounded border border-cortex-gray border-opacity-20 text-cortex-white focus:outline-none focus:border-cortex-blue transition-colors"
-        >
-          <option value="" disabled>Select a service</option>
-          <option value="chatbot">AI Chatbot</option>
-          <option value="agent">AI Agent</option>
-          <option value="automation">Automation</option>
-          <option value="integration">Integration Support</option>
-        </select>
+        <Select value={formData.service} onValueChange={handleServiceChange} required>
+          <SelectTrigger 
+            className="w-full px-4 py-2 bg-cortex-navy bg-opacity-30 rounded border border-cortex-gray border-opacity-20 text-cortex-white focus:outline-none focus:border-cortex-blue transition-colors"
+          >
+            <SelectValue placeholder="Select a service" />
+          </SelectTrigger>
+          <SelectContent className="bg-cortex-black text-cortex-white border border-cortex-gray border-opacity-20">
+            <SelectItem value="personalized-consultation">Personalized Consultation</SelectItem>
+            <SelectItem value="channel-automations">Channel Automations</SelectItem>
+            <SelectItem value="ai-agents">AI Agents</SelectItem>
+            <SelectItem value="backend-automations">Backend Automations</SelectItem>
+            <SelectItem value="custom-tool-automations">Custom Tool Automations</SelectItem>
+            <SelectItem value="custom-training">Custom Training & Support</SelectItem>
+            <SelectItem value="something-else">Something else</SelectItem>
+          </SelectContent>
+        </Select>
       </div>
       
       <div className="opacity-0 animate-fade-in-up" style={{ animationDelay: '400ms', animationFillMode: 'forwards' }}>
