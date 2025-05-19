@@ -16,13 +16,13 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ title, description, icon, del
     switch (title) {
       case "AI Chatbots":
         return hovered ? 'text-cortex-blue' : '';
-      case "CRM + WhatsApp Automations":
+      case "Channel Automations":
         return hovered ? 'text-cortex-teal' : '';
       case "AI Agents":
         return hovered ? 'text-cortex-blue' : '';
       case "Backend Automations":
         return hovered ? 'text-cortex-teal' : '';
-      case "Voice Assistant Integrations":
+      case "Custom Tool Automations":
         return hovered ? 'text-cortex-blue' : '';
       case "Custom Training & Support":
         return hovered ? 'text-cortex-teal' : '';
@@ -36,13 +36,13 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ title, description, icon, del
     switch (title) {
       case "AI Chatbots":
         return hovered ? 'shadow-cortex-blue/40' : '';
-      case "CRM + WhatsApp Automations":
+      case "Channel Automations":
         return hovered ? 'shadow-cortex-teal/40' : '';
       case "AI Agents":
         return hovered ? 'shadow-cortex-blue/40' : '';
       case "Backend Automations":
         return hovered ? 'shadow-cortex-teal/40' : '';
-      case "Voice Assistant Integrations":
+      case "Custom Tool Automations":
         return hovered ? 'shadow-cortex-blue/40' : '';
       case "Custom Training & Support":
         return hovered ? 'shadow-cortex-teal/40' : '';

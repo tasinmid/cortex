@@ -1,3 +1,4 @@
+
 import React, { useEffect } from 'react';
 import { useIsMobile } from '@/hooks/use-mobile';
 import Navbar from '@/components/Navbar';
@@ -46,8 +47,8 @@ const Index = () => {
       icon: <MessageSquare size={48} />
     },
     {
-      title: "CRM + WhatsApp Automations",
-      description: "Seamlessly integrate your CRM with messaging platforms for automated workflows.",
+      title: "Channel Automations",
+      description: "Seamlessly integrate your messaging platforms for automated workflows across channels.",
       icon: <Zap size={48} />
     },
     {
@@ -61,8 +62,8 @@ const Index = () => {
       icon: <Database size={48} />
     },
     {
-      title: "Voice Assistant Integrations",
-      description: "Connect your systems with popular voice assistants for hands-free operation.",
+      title: "Custom Tool Automations",
+      description: "Connect your systems with custom tools and APIs for specialized automation.",
       icon: <Headphones size={48} />
     },
     {
