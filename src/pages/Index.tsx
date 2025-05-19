@@ -12,7 +12,7 @@ import Footer from '@/components/Footer';
 import { Separator } from '@/components/ui/separator';
 
 // Import icons
-import { MessageSquare, Zap, Bot, Database, Headphones, BarChart } from 'lucide-react';
+import { MessageSquare, Zap, Bot, Database, BarChart, Wrench } from 'lucide-react';
 
 const Index = () => {
   const isMobile = useIsMobile();
@@ -64,7 +64,7 @@ const Index = () => {
     {
       title: "Custom Tool Automations",
       description: "Connect your systems with custom tools and APIs for specialized automation.",
-      icon: <Headphones size={48} />
+      icon: <Wrench size={48} />
     },
     {
       title: "Custom Training & Support",
