@@ -18,6 +18,11 @@ const ContactForm: React.FC = () => {
     message: '',
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [errors, setErrors] = useState({
+    name: false,
+    email: false,
+    service: false,
+  });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -25,6 +30,14 @@ const ContactForm: React.FC = () => {
       ...prev,
       [name]: value,
     }));
+    
+    // Clear error when user types
+    if (errors[name as keyof typeof errors]) {
+      setErrors((prev) => ({
+        ...prev,
+        [name]: false,
+      }));
+    }
   };
 
   const handleServiceChange = (value: string) => {
@@ -32,10 +45,39 @@ const ContactForm: React.FC = () => {
       ...prev,
       service: value,
     }));
+    
+    // Clear service error when user selects a service
+    if (errors.service) {
+      setErrors((prev) => ({
+        ...prev,
+        service: false,
+      }));
+    }
+  };
+
+  const validateForm = () => {
+    const newErrors = {
+      name: !formData.name.trim(),
+      email: !formData.email.trim(),
+      service: !formData.service.trim(),
+    };
+    
+    setErrors(newErrors);
+    return !Object.values(newErrors).some(Boolean);
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    
+    if (!validateForm()) {
+      toast({
+        title: "Form incomplete",
+        description: "Please fill in all required fields.",
+        variant: "destructive",
+      });
+      return;
+    }
+    
     setIsSubmitting(true);
     
     // Simulate form submission
@@ -59,36 +101,52 @@ const ContactForm: React.FC = () => {
   return (
     <form onSubmit={handleSubmit} className="space-y-6">
       <div className="opacity-0 animate-fade-in-up" style={{ animationDelay: '100ms', animationFillMode: 'forwards' }}>
-        <label htmlFor="name" className="block text-cortex-white mb-1">Name</label>
+        <label htmlFor="name" className="block text-cortex-white mb-1">
+          Name <span className="text-red-500">*</span>
+        </label>
         <input
           type="text"
           id="name"
           name="name"
-          required
           value={formData.name}
           onChange={handleChange}
-          className="w-full px-4 py-2 bg-cortex-navy bg-opacity-30 rounded border border-cortex-gray border-opacity-20 text-cortex-white focus:outline-none focus:border-cortex-blue transition-colors"
+          className={`w-full px-4 py-2 bg-cortex-navy bg-opacity-30 rounded border ${
+            errors.name ? 'border-red-500' : 'border-cortex-gray border-opacity-20'
+          } text-cortex-white focus:outline-none focus:border-cortex-blue transition-colors`}
         />
+        {errors.name && (
+          <p className="mt-1 text-sm text-red-500">Name is required</p>
+        )}
       </div>
       
       <div className="opacity-0 animate-fade-in-up" style={{ animationDelay: '200ms', animationFillMode: 'forwards' }}>
-        <label htmlFor="email" className="block text-cortex-white mb-1">Email</label>
+        <label htmlFor="email" className="block text-cortex-white mb-1">
+          Email <span className="text-red-500">*</span>
+        </label>
         <input
           type="email"
           id="email"
           name="email"
-          required
           value={formData.email}
           onChange={handleChange}
-          className="w-full px-4 py-2 bg-cortex-navy bg-opacity-30 rounded border border-cortex-gray border-opacity-20 text-cortex-white focus:outline-none focus:border-cortex-blue transition-colors"
+          className={`w-full px-4 py-2 bg-cortex-navy bg-opacity-30 rounded border ${
+            errors.email ? 'border-red-500' : 'border-cortex-gray border-opacity-20'
+          } text-cortex-white focus:outline-none focus:border-cortex-blue transition-colors`}
         />
+        {errors.email && (
+          <p className="mt-1 text-sm text-red-500">Email is required</p>
+        )}
       </div>
       
       <div className="opacity-0 animate-fade-in-up" style={{ animationDelay: '300ms', animationFillMode: 'forwards' }}>
-        <label htmlFor="service" className="block text-cortex-white mb-1">Service Type</label>
-        <Select value={formData.service} onValueChange={handleServiceChange} required>
+        <label htmlFor="service" className="block text-cortex-white mb-1">
+          Service Type <span className="text-red-500">*</span>
+        </label>
+        <Select value={formData.service} onValueChange={handleServiceChange}>
           <SelectTrigger 
-            className="w-full px-4 py-2 bg-cortex-navy bg-opacity-30 rounded border border-cortex-gray border-opacity-20 text-cortex-white focus:outline-none focus:border-cortex-blue transition-colors"
+            className={`w-full px-4 py-2 bg-cortex-navy bg-opacity-30 rounded border ${
+              errors.service ? 'border-red-500' : 'border-cortex-gray border-opacity-20'
+            } text-cortex-white focus:outline-none focus:border-cortex-blue transition-colors`}
           >
             <SelectValue placeholder="Select a service" />
           </SelectTrigger>
@@ -102,6 +160,9 @@ const ContactForm: React.FC = () => {
             <SelectItem value="something-else">Something else</SelectItem>
           </SelectContent>
         </Select>
+        {errors.service && (
+          <p className="mt-1 text-sm text-red-500">Service type is required</p>
+        )}
       </div>
       
       <div className="opacity-0 animate-fade-in-up" style={{ animationDelay: '400ms', animationFillMode: 'forwards' }}>
@@ -110,7 +171,6 @@ const ContactForm: React.FC = () => {
           id="message"
           name="message"
           rows={5}
-          required
           value={formData.message}
           onChange={handleChange}
           className="w-full px-4 py-2 bg-cortex-navy bg-opacity-30 rounded border border-cortex-gray border-opacity-20 text-cortex-white focus:outline-none focus:border-cortex-blue transition-colors"
