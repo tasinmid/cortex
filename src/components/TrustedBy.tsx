@@ -22,13 +22,14 @@ const TrustedByLogo: React.FC<TrustedByLogoProps> = ({ src, alt }) => {
 const TrustedBy: React.FC = () => {
   const logos = [
     { src: "/lovable-uploads/b496ff38-7427-4c67-948a-f5e4613de137.png", alt: "Trust Immigration Consultant" },
+    { src: "/lovable-uploads/6830ce48-4d15-4d89-bdbb-44a09ec85e91.png", alt: "TIC Innovative Inc" },
     // Add more logos as needed
   ];
 
   return (
-    <div className="py-12 bg-cortex-black">
+    <div className="py-8 bg-cortex-black">
       <div className="container mx-auto px-6">
-        <div className="text-center mb-6">
+        <div className="text-center mb-4">
           <h3 className="text-xl font-semibold text-cortex-white uppercase tracking-wider">Trusted By</h3>
           <Separator className="w-24 mx-auto mt-2 bg-cortex-gray opacity-30" />
         </div>
