@@ -9,6 +9,7 @@ import TestimonialCard from '@/components/TestimonialCard';
 import ContactForm from '@/components/ContactForm';
 import Footer from '@/components/Footer';
 import { Separator } from '@/components/ui/separator';
+import TrustedBy from '@/components/TrustedBy';
 
 // Import icons
 import { UserRound, Zap, Bot, Database, BarChart, Wrench } from 'lucide-react';
@@ -164,6 +165,9 @@ const Index = () => {
         
         <div className="absolute bottom-0 left-0 w-full h-20 bg-gradient-to-t from-cortex-black to-transparent"></div>
       </section>
+      
+      {/* Trusted By Section */}
+      <TrustedBy />
       
       {/* Services Section */}
       <AnimatedSection id="services" className="py-20 bg-cortex-black">
