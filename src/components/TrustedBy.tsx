@@ -22,7 +22,7 @@ const TrustedByLogo: React.FC<TrustedByLogoProps> = ({ src, alt }) => {
 const TrustedBy: React.FC = () => {
   const logos = [
     { src: "/lovable-uploads/b496ff38-7427-4c67-948a-f5e4613de137.png", alt: "Trust Immigration Consultant" },
-    // Logo removed as requested
+    { src: "/lovable-uploads/3657e19d-928a-41b7-9cc0-e44a2419828c.png", alt: "TIC Innovative Inc" },
     // Add more logos as needed
   ];
 
