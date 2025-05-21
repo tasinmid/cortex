@@ -24,6 +24,7 @@ const TrustedBy: React.FC = () => {
     { src: "/lovable-uploads/b496ff38-7427-4c67-948a-f5e4613de137.png", alt: "Trust Immigration Consultant" },
     { src: "/lovable-uploads/3657e19d-928a-41b7-9cc0-e44a2419828c.png", alt: "TIC Innovative Inc" },
     { src: "/lovable-uploads/d90673b2-d99e-4164-952f-0f6156c4fcb9.png", alt: "WANAAN" },
+    { src: "/lovable-uploads/52093435-e02e-40b0-b201-eede68679cbd.png", alt: "Evergrow Marketing" },
     // Add more logos as needed
   ];
 
