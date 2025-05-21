@@ -57,7 +57,7 @@ const Footer: React.FC = () => {
             <h3 className="text-cortex-white font-semibold mb-4">Contact Us</h3>
             <div className="space-y-2">
               <p className="text-cortex-gray">info@cortex.ai</p>
-              <p className="text-cortex-gray">+1 (555) 123-4567</p>
+              <p className="text-cortex-gray">+8801774087180</p>
               <a href="#contact" className="inline-block mt-4 bg-cortex-blue hover:bg-opacity-80 text-white font-medium py-2 px-4 rounded transition-all duration-300">
                 Get in Touch
               </a>
