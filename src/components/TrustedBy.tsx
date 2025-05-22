@@ -58,12 +58,13 @@ const TrustedBy: React.FC = () => {
     const scrollSpeed = isMobile ? 1 : 0.6;
     let lastTimestamp = 0;
     let animationId: number;
+    let isPaused = false;
 
     const animate = (timestamp: number) => {
       if (!scrollContainer) return;
       
-      // If first run or enough time passed
-      if (!lastTimestamp || timestamp - lastTimestamp >= 16) { // ~60fps
+      // If animation is not paused and enough time has passed
+      if (!isPaused && (!lastTimestamp || timestamp - lastTimestamp >= 16)) { // ~60fps
         lastTimestamp = timestamp;
         scrollPos += scrollSpeed;
         
@@ -78,15 +79,16 @@ const TrustedBy: React.FC = () => {
       animationId = requestAnimationFrame(animate);
     };
     
+    // Start the animation immediately
     animationId = requestAnimationFrame(animate);
     
-    // Pause scrolling when hovering
+    // Optional: still allow pausing on hover if desired
     scrollContainer.addEventListener('mouseenter', () => {
-      cancelAnimationFrame(animationId);
+      isPaused = true;
     });
     
     scrollContainer.addEventListener('mouseleave', () => {
-      animationId = requestAnimationFrame(animate);
+      isPaused = false;
     });
     
     return () => {
