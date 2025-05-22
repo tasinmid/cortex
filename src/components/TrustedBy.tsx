@@ -3,7 +3,6 @@ import React, { useEffect, useRef } from 'react';
 import { Separator } from '@/components/ui/separator';
 import { AspectRatio } from '@/components/ui/aspect-ratio';
 import { useIsMobile } from '@/hooks/use-mobile';
-import { Carousel, CarouselContent, CarouselItem } from '@/components/ui/carousel';
 
 interface TrustedByLogoProps {
   src: string;
@@ -35,7 +34,8 @@ const TrustedByLogo: React.FC<TrustedByLogoProps> = ({ src, alt, size = 'regular
 };
 
 const TrustedBy: React.FC = () => {
-  const scrollRef = useRef<HTMLDivElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const loopRef = useRef<HTMLDivElement>(null);
   const isMobile = useIsMobile();
   
   const logos = [
@@ -46,32 +46,39 @@ const TrustedBy: React.FC = () => {
   ];
 
   useEffect(() => {
-    const scrollContainer = scrollRef.current;
-    if (!scrollContainer) return;
+    const scrollContainer = containerRef.current;
+    const loopContainer = loopRef.current;
+    if (!scrollContainer || !loopContainer) return;
 
-    const scrollSpeed = isMobile ? 0.5 : 0.3;
+    // Clone the logos once to ensure continuous loop
+    const cloneContainer = loopContainer.cloneNode(true) as HTMLDivElement;
+    scrollContainer.appendChild(cloneContainer);
+
+    let scrollPos = 0;
+    const scrollSpeed = isMobile ? 1 : 0.6;
+    let lastTimestamp = 0;
     let animationId: number;
-    
-    const scroll = () => {
+
+    const animate = (timestamp: number) => {
       if (!scrollContainer) return;
       
-      // Move the scroll position
-      scrollContainer.scrollLeft += scrollSpeed;
-      
-      // If we've scrolled to the right enough that the first logo is out of view,
-      // move it to the end to create an infinite loop effect
-      const firstItem = scrollContainer.querySelector(".logo-item") as HTMLElement;
-      if (firstItem && scrollContainer.scrollLeft > firstItem.offsetWidth) {
-        // Reset scroll position and move the first item to the end
-        scrollContainer.scrollLeft -= firstItem.offsetWidth;
-        scrollContainer.appendChild(firstItem.cloneNode(true));
-        scrollContainer.removeChild(firstItem);
+      // If first run or enough time passed
+      if (!lastTimestamp || timestamp - lastTimestamp >= 16) { // ~60fps
+        lastTimestamp = timestamp;
+        scrollPos += scrollSpeed;
+        
+        // If we've scrolled past the first set of logos, reset position to create infinite loop
+        if (scrollPos >= loopContainer.offsetWidth) {
+          scrollPos = 0;
+        }
+        
+        scrollContainer.scrollLeft = scrollPos;
       }
       
-      animationId = requestAnimationFrame(scroll);
+      animationId = requestAnimationFrame(animate);
     };
     
-    scroll();
+    animationId = requestAnimationFrame(animate);
     
     // Pause scrolling when hovering
     scrollContainer.addEventListener('mouseenter', () => {
@@ -79,7 +86,7 @@ const TrustedBy: React.FC = () => {
     });
     
     scrollContainer.addEventListener('mouseleave', () => {
-      scroll();
+      animationId = requestAnimationFrame(animate);
     });
     
     return () => {
@@ -95,18 +102,17 @@ const TrustedBy: React.FC = () => {
           <Separator className="w-24 mx-auto mt-2 bg-cortex-gray opacity-30" />
         </div>
         <div 
-          ref={scrollRef}
-          className="flex flex-nowrap overflow-x-hidden"
+          ref={containerRef}
+          className="flex overflow-x-hidden"
           style={{ scrollBehavior: 'smooth' }}
         >
-          {/* Generate enough logos to fill the width plus some extra */}
-          {Array(10).fill(null).map((_, i) => (
-            logos.map((logo, logoIndex) => (
-              <div key={`${i}-${logoIndex}`} className="logo-item">
+          <div ref={loopRef} className="flex flex-nowrap">
+            {logos.map((logo, index) => (
+              <div key={index} className="logo-item">
                 <TrustedByLogo src={logo.src} alt={logo.alt} size={logo.size} />
               </div>
-            ))
-          ))}
+            ))}
+          </div>
         </div>
       </div>
     </div>
