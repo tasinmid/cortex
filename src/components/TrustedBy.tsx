@@ -3,6 +3,7 @@ import React, { useEffect, useRef } from 'react';
 import { Separator } from '@/components/ui/separator';
 import { AspectRatio } from '@/components/ui/aspect-ratio';
 import { useIsMobile } from '@/hooks/use-mobile';
+import { Carousel, CarouselContent, CarouselItem } from '@/components/ui/carousel';
 
 interface TrustedByLogoProps {
   src: string;
@@ -13,13 +14,13 @@ interface TrustedByLogoProps {
 const TrustedByLogo: React.FC<TrustedByLogoProps> = ({ src, alt, size = 'regular' }) => {
   const isMobile = useIsMobile();
   const widthClass = {
-    small: isMobile ? "w-[70px]" : "w-[100px] md:w-[120px]",
+    small: isMobile ? "w-[65px]" : "w-[90px] md:w-[110px]",
     regular: isMobile ? "w-[80px]" : "w-[120px] md:w-[140px]",
-    large: isMobile ? "w-[90px]" : "w-[140px] md:w-[160px]"
+    large: isMobile ? "w-[100px]" : "w-[150px] md:w-[170px]"
   }[size];
 
   return (
-    <div className={`px-3 md:px-4 flex items-center justify-center`}>
+    <div className={`px-2 md:px-4 flex items-center justify-center`}>
       <div className={widthClass}>
         <AspectRatio ratio={3/2} className="overflow-hidden">
           <img 
@@ -42,11 +43,6 @@ const TrustedBy: React.FC = () => {
     { src: "/lovable-uploads/3657e19d-928a-41b7-9cc0-e44a2419828c.png", alt: "TIC Innovative Inc", size: "small" as const },
     { src: "/lovable-uploads/d90673b2-d99e-4164-952f-0f6156c4fcb9.png", alt: "WANAAN", size: "large" as const },
     { src: "/lovable-uploads/52093435-e02e-40b0-b201-eede68679cbd.png", alt: "Evergrow Marketing", size: "large" as const },
-    // Duplicate logos for continuous scrolling effect
-    { src: "/lovable-uploads/b496ff38-7427-4c67-948a-f5e4613de137.png", alt: "Trust Immigration Consultant", size: "small" as const },
-    { src: "/lovable-uploads/3657e19d-928a-41b7-9cc0-e44a2419828c.png", alt: "TIC Innovative Inc", size: "small" as const },
-    { src: "/lovable-uploads/d90673b2-d99e-4164-952f-0f6156c4fcb9.png", alt: "WANAAN", size: "large" as const },
-    { src: "/lovable-uploads/52093435-e02e-40b0-b201-eede68679cbd.png", alt: "Evergrow Marketing", size: "large" as const },
   ];
 
   useEffect(() => {
@@ -54,20 +50,24 @@ const TrustedBy: React.FC = () => {
     if (!scrollContainer) return;
 
     const scrollSpeed = isMobile ? 0.5 : 0.3;
-    let scrollPosition = 0;
     let animationId: number;
     
     const scroll = () => {
       if (!scrollContainer) return;
       
-      scrollPosition += scrollSpeed;
+      // Move the scroll position
+      scrollContainer.scrollLeft += scrollSpeed;
       
-      // Reset scroll position when half of the content is scrolled (to create infinite loop)
-      if (scrollPosition >= scrollContainer.scrollWidth / 2) {
-        scrollPosition = 0;
+      // If we've scrolled to the right enough that the first logo is out of view,
+      // move it to the end to create an infinite loop effect
+      const firstItem = scrollContainer.querySelector(".logo-item") as HTMLElement;
+      if (firstItem && scrollContainer.scrollLeft > firstItem.offsetWidth) {
+        // Reset scroll position and move the first item to the end
+        scrollContainer.scrollLeft -= firstItem.offsetWidth;
+        scrollContainer.appendChild(firstItem.cloneNode(true));
+        scrollContainer.removeChild(firstItem);
       }
       
-      scrollContainer.scrollLeft = scrollPosition;
       animationId = requestAnimationFrame(scroll);
     };
     
@@ -99,8 +99,13 @@ const TrustedBy: React.FC = () => {
           className="flex flex-nowrap overflow-x-hidden"
           style={{ scrollBehavior: 'smooth' }}
         >
-          {logos.map((logo, index) => (
-            <TrustedByLogo key={index} src={logo.src} alt={logo.alt} size={logo.size} />
+          {/* Generate enough logos to fill the width plus some extra */}
+          {Array(10).fill(null).map((_, i) => (
+            logos.map((logo, logoIndex) => (
+              <div key={`${i}-${logoIndex}`} className="logo-item">
+                <TrustedByLogo src={logo.src} alt={logo.alt} size={logo.size} />
+              </div>
+            ))
           ))}
         </div>
       </div>
