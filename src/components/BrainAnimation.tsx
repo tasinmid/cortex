@@ -1,4 +1,3 @@
-
 import React, { useRef, useEffect } from 'react';
 import * as THREE from 'three';
 import { useIsMobile } from '@/hooks/use-mobile';
@@ -20,7 +19,8 @@ const BrainAnimation: React.FC = () => {
       0.1, 
       1000
     );
-    camera.position.z = isMobile ? 6.5 : 5; // Move camera farther back on mobile
+    // Keep the camera closer on mobile for a larger appearance
+    camera.position.z = isMobile ? 4.5 : 5; 
     
     // Renderer setup
     const renderer = new THREE.WebGLRenderer({ 
@@ -32,7 +32,8 @@ const BrainAnimation: React.FC = () => {
     containerRef.current.appendChild(renderer.domElement);
     
     // Create a sphere (brain-like shape)
-    const geometry = new THREE.IcosahedronGeometry(isMobile ? 1.2 : 1.5, 3); // Smaller on mobile
+    // Increase the size for mobile
+    const geometry = new THREE.IcosahedronGeometry(isMobile ? 1.8 : 1.5, 3);
     
     // Create a material
     const material = new THREE.MeshPhongMaterial({
@@ -50,8 +51,9 @@ const BrainAnimation: React.FC = () => {
     scene.add(brain);
     
     // Create a wireframe overlay
+    // Also increase the wireframe size for mobile to match the brain mesh
     const wireframe = new THREE.Mesh(
-      new THREE.IcosahedronGeometry(isMobile ? 1.22 : 1.52, 3),
+      new THREE.IcosahedronGeometry(isMobile ? 1.82 : 1.52, 3),
       new THREE.MeshBasicMaterial({ 
         color: 0x20c997,
         wireframe: true,
@@ -63,21 +65,22 @@ const BrainAnimation: React.FC = () => {
     
     // Add some particle points
     const particlesGeometry = new THREE.BufferGeometry();
-    const particlesCount = isMobile ? 100 : 200; // Fewer particles on mobile
+    const particlesCount = isMobile ? 150 : 200; // More particles on mobile for better visibility
     
     const positions = new Float32Array(particlesCount * 3);
     for (let i = 0; i < particlesCount; i++) {
       const i3 = i * 3;
-      positions[i3] = (Math.random() - 0.5) * (isMobile ? 4 : 5);
-      positions[i3 + 1] = (Math.random() - 0.5) * (isMobile ? 4 : 5);
-      positions[i3 + 2] = (Math.random() - 0.5) * (isMobile ? 4 : 5);
+      // Expand particle field on mobile for better visibility
+      positions[i3] = (Math.random() - 0.5) * (isMobile ? 6 : 5);
+      positions[i3 + 1] = (Math.random() - 0.5) * (isMobile ? 6 : 5);
+      positions[i3 + 2] = (Math.random() - 0.5) * (isMobile ? 6 : 5);
     }
     
     particlesGeometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
     
     const particlesMaterial = new THREE.PointsMaterial({
       color: 0x00aaff,
-      size: 0.05,
+      size: isMobile ? 0.08 : 0.05, // Larger particles on mobile
       transparent: true,
       blending: THREE.AdditiveBlending
     });
@@ -145,7 +148,7 @@ const BrainAnimation: React.FC = () => {
   return (
     <div 
       ref={containerRef} 
-      className={`relative ${isMobile ? 'h-[200px] mt-8' : 'h-[500px]'} w-full animate-fade-in-up animate-delay-300`}
+      className={`relative ${isMobile ? 'h-[280px] mt-8' : 'h-[500px]'} w-full animate-fade-in-up animate-delay-300`}
     />
   );
 };
