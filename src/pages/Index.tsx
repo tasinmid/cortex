@@ -1,3 +1,4 @@
+
 import React, { useEffect } from 'react';
 import { useIsMobile } from '@/hooks/use-mobile';
 import Navbar from '@/components/Navbar';
@@ -131,8 +132,8 @@ const Index = () => {
         <div className="absolute inset-0 bg-gradient-to-b from-cortex-navy to-cortex-black opacity-90 z-0"></div>
         <div className="container mx-auto px-6 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center pt-16">
-            <div className="order-2 lg:order-1">
-              <h1 className="text-4xl md:text-6xl font-bold mb-4 text-shadow opacity-0 animate-fade-in-up" style={{ animationDelay: '100ms', animationFillMode: 'forwards' }}>
+            <div className={`${isMobile ? "order-2" : "order-2 lg:order-1"}`}>
+              <h1 className="text-3xl md:text-6xl font-bold mb-4 text-shadow opacity-0 animate-fade-in-up" style={{ animationDelay: '100ms', animationFillMode: 'forwards' }}>
                 Build AI that works for you — <span className="text-gradient">24/7</span>
               </h1>
               
@@ -157,7 +158,7 @@ const Index = () => {
               </div>
             </div>
             
-            <div className="order-1 lg:order-2 flex justify-center">
+            <div className={`${isMobile ? "order-1 mb-8" : "order-1 lg:order-2"} flex justify-center`}>
               <BrainAnimation />
             </div>
           </div>

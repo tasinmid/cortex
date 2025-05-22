@@ -20,7 +20,7 @@ const BrainAnimation: React.FC = () => {
       0.1, 
       1000
     );
-    camera.position.z = 5;
+    camera.position.z = isMobile ? 6.5 : 5; // Move camera farther back on mobile
     
     // Renderer setup
     const renderer = new THREE.WebGLRenderer({ 
@@ -32,7 +32,7 @@ const BrainAnimation: React.FC = () => {
     containerRef.current.appendChild(renderer.domElement);
     
     // Create a sphere (brain-like shape)
-    const geometry = new THREE.IcosahedronGeometry(1.5, 3);
+    const geometry = new THREE.IcosahedronGeometry(isMobile ? 1.2 : 1.5, 3); // Smaller on mobile
     
     // Create a material
     const material = new THREE.MeshPhongMaterial({
@@ -51,7 +51,7 @@ const BrainAnimation: React.FC = () => {
     
     // Create a wireframe overlay
     const wireframe = new THREE.Mesh(
-      new THREE.IcosahedronGeometry(1.52, 3),
+      new THREE.IcosahedronGeometry(isMobile ? 1.22 : 1.52, 3),
       new THREE.MeshBasicMaterial({ 
         color: 0x20c997,
         wireframe: true,
@@ -63,14 +63,14 @@ const BrainAnimation: React.FC = () => {
     
     // Add some particle points
     const particlesGeometry = new THREE.BufferGeometry();
-    const particlesCount = 200;
+    const particlesCount = isMobile ? 100 : 200; // Fewer particles on mobile
     
     const positions = new Float32Array(particlesCount * 3);
     for (let i = 0; i < particlesCount; i++) {
       const i3 = i * 3;
-      positions[i3] = (Math.random() - 0.5) * 5;
-      positions[i3 + 1] = (Math.random() - 0.5) * 5;
-      positions[i3 + 2] = (Math.random() - 0.5) * 5;
+      positions[i3] = (Math.random() - 0.5) * (isMobile ? 4 : 5);
+      positions[i3 + 1] = (Math.random() - 0.5) * (isMobile ? 4 : 5);
+      positions[i3 + 2] = (Math.random() - 0.5) * (isMobile ? 4 : 5);
     }
     
     particlesGeometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
@@ -140,12 +140,12 @@ const BrainAnimation: React.FC = () => {
       particlesMaterial.dispose();
       renderer.dispose();
     };
-  }, []);
+  }, [isMobile]);
   
   return (
     <div 
       ref={containerRef} 
-      className={`relative ${isMobile ? 'h-[250px]' : 'h-[500px]'} w-full animate-fade-in-up animate-delay-300`}
+      className={`relative ${isMobile ? 'h-[200px] mt-8' : 'h-[500px]'} w-full animate-fade-in-up animate-delay-300`}
     />
   );
 };
