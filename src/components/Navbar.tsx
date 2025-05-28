@@ -40,7 +40,7 @@ const Navbar: React.FC = () => {
             href="#home" 
             className="text-2xl font-bold text-gradient animate-fade-in-down"
           >
-            Cortex.ai
+            Cortex-AI
           </a>
           
           {/* Desktop Navigation */}

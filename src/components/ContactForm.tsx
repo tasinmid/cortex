@@ -80,8 +80,23 @@ const ContactForm: React.FC = () => {
     
     setIsSubmitting(true);
     
-    // Simulate form submission
-    setTimeout(() => {
+    try {
+      const webhookUrl = 'https://script.google.com/macros/s/AKfycbxHcQuHeI24ImRvFTHi0wpzgC5A3RxKTXSpB0AvNy65R6c274YSOJVd7cLPV6usp15mwA/exec?gid=0';
+      
+      const response = await fetch(webhookUrl, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        mode: 'no-cors',
+        body: JSON.stringify({
+          Name: formData.name,
+          Email: formData.email,
+          "Service type": formData.service,
+          "Client message": formData.message || 'No message provided'
+        }),
+      });
+
       toast({
         title: "Message sent!",
         description: "We'll get back to you as soon as possible.",
@@ -94,8 +109,16 @@ const ContactForm: React.FC = () => {
         message: '',
       });
       
+    } catch (error) {
+      console.error('Error sending form data:', error);
+      toast({
+        title: "Error",
+        description: "Failed to send your message. Please try again.",
+        variant: "destructive",
+      });
+    } finally {
       setIsSubmitting(false);
-    }, 1500);
+    }
   };
 
   return (

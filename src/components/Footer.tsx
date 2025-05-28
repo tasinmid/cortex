@@ -11,7 +11,7 @@ const Footer: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* Logo and Description */}
           <div className="md:col-span-2 opacity-0 animate-fade-in-up" style={{ animationDelay: '100ms', animationFillMode: 'forwards' }}>
-            <a href="#home" className="text-2xl font-bold text-gradient">Cortex.ai</a>
+            <a href="#home" className="text-2xl font-bold text-gradient">Cortex-AI</a>
             <p className="mt-4 text-cortex-gray">
               Building AI that works for you — 24/7. We help businesses scale smarter through custom chatbots, automation systems, and AI agents.
             </p>
@@ -67,7 +67,7 @@ const Footer: React.FC = () => {
         
         {/* Copyright */}
         <div className="mt-12 pt-8 border-t border-cortex-gray border-opacity-10 text-center opacity-0 animate-fade-in-up" style={{ animationDelay: '400ms', animationFillMode: 'forwards' }}>
-          <p className="text-cortex-gray">© {currentYear} Cortex.ai. All rights reserved.</p>
+          <p className="text-cortex-gray">© {currentYear} Cortex-AI. All rights reserved.</p>
         </div>
       </div>
     </footer>

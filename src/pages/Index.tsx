@@ -1,4 +1,3 @@
-
 import React, { useEffect } from 'react';
 import { useIsMobile } from '@/hooks/use-mobile';
 import Navbar from '@/components/Navbar';
@@ -20,7 +19,7 @@ const Index = () => {
   
   useEffect(() => {
     // Update the document title
-    document.title = "Cortex.ai - Your AI Automation & Agent Partner";
+    document.title = "Cortex-AI - Your AI Automation & Agent Partner";
   }, []);
   
   // Section header with animated underline
@@ -104,12 +103,12 @@ const Index = () => {
   
   const testimonials = [
     {
-      quote: "Working with Cortex.ai was a turning point for us. Their AI agent reduced our customer response time by over 80%, and their team was with us every step of the way.",
+      quote: "Working with Cortex-AI was a turning point for us. Their AI agent reduced our customer response time by over 80%, and their team was with us every step of the way.",
       author: "Sarah N.",
       position: "Operations Director, Swift Rentals"
     },
     {
-      quote: "Cortex.ai didn't just deliver a chatbot — they created a digital team member. We've streamlined our sales pipeline and improved customer experience across channels.",
+      quote: "Cortex-AI didn't just deliver a chatbot — they created a digital team member. We've streamlined our sales pipeline and improved customer experience across channels.",
       author: "James T.",
       position: "CEO, UrbanRide Solutions"
     },
@@ -138,19 +137,21 @@ const Index = () => {
               </h1>
               
               <p className="text-cortex-gray text-lg md:text-xl mb-8 max-w-xl opacity-0 animate-fade-in-up" style={{ animationDelay: '200ms', animationFillMode: 'forwards' }}>
-                Cortex.ai helps businesses scale smarter through custom chatbots, automation systems, and AI agents tailored to your needs.
+                Cortex-AI helps businesses scale smarter through custom chatbots, automation systems, and AI agents tailored to your needs.
               </p>
               
               <div className="flex flex-col sm:flex-row gap-4 opacity-0 animate-fade-in-up" style={{ animationDelay: '300ms', animationFillMode: 'forwards' }}>
                 <a 
-                  href="#contact" 
+                  href="https://calendly.com/tasinmid/30min" 
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="bg-cortex-blue px-8 py-3 rounded text-cortex-white font-medium hover:bg-opacity-80 transition-all duration-300 text-center animate-pulse-glow"
                 >
                   Book a Discovery Call
                 </a>
                 
                 <a 
-                  href="#process" 
+                  href="#contact" 
                   className="border border-cortex-navy bg-transparent px-8 py-3 rounded text-cortex-white font-medium hover:border-cortex-blue transition-all duration-300 text-center"
                 >
                   Talk to an Expert
@@ -224,7 +225,7 @@ const Index = () => {
           <div className="text-center mb-16">
             <SectionHeader title="Client Testimonials" gradient="text-gradient" />
             <p className="text-cortex-gray text-lg max-w-2xl mx-auto">
-              Don't just take our word for it — see what our clients have to say about working with Cortex.ai.
+              Don't just take our word for it — see what our clients have to say about working with Cortex-AI.
             </p>
           </div>
           
@@ -264,7 +265,9 @@ const Index = () => {
                   Let's chat and see how we can transform your business with AI.
                 </p>
                 <a 
-                  href="#" 
+                  href="https://calendly.com/tasinmid/30min" 
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="inline-block bg-cortex-blue hover:bg-opacity-80 text-white font-medium py-3 px-6 rounded transition-all duration-300 animate-pulse-glow"
                 >
                   Book a Call
