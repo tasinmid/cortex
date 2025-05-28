@@ -83,18 +83,22 @@ const ContactForm: React.FC = () => {
     try {
       const webhookUrl = 'https://script.google.com/macros/s/AKfycbxHcQuHeI24ImRvFTHi0wpzgC5A3RxKTXSpB0AvNy65R6c274YSOJVd7cLPV6usp15mwA/exec?gid=0';
       
+      const payload = {
+        Name: formData.name,
+        Email: formData.email,
+        "Service type": formData.service,
+        "Client message": formData.message || 'No message provided'
+      };
+
+      console.log('Sending JSON payload to webhook:', payload);
+
       const response = await fetch(webhookUrl, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         mode: 'no-cors',
-        body: JSON.stringify({
-          Name: formData.name,
-          Email: formData.email,
-          "Service type": formData.service,
-          "Client message": formData.message || 'No message provided'
-        }),
+        body: JSON.stringify(payload),
       });
 
       toast({
