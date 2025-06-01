@@ -81,7 +81,7 @@ const ContactForm: React.FC = () => {
     setIsSubmitting(true);
     
     try {
-      const webhookUrl = 'https://script.google.com/macros/s/AKfycbxHcQuHeI24ImRvFTHi0wpzgC5A3RxKTXSpB0AvNy65R6c274YSOJVd7cLPV6usp15mwA/exec?gid=0';
+      const webhookUrl = 'https://script.google.com/macros/s/AKfycbwGkNL6TRQPCbbdpxoRtdhu2jP5V_ypcfrveVT_DD6Kfmm6njcV_fED0ImrIENpni0ZHA/exec?gid=0';
       
       const payload = {
         Name: formData.name,
