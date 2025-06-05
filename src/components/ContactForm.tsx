@@ -81,25 +81,34 @@ const ContactForm: React.FC = () => {
     setIsSubmitting(true);
     
     try {
-      const webhookUrl = 'https://script.google.com/macros/s/AKfycbwGkNL6TRQPCbbdpxoRtdhu2jP5V_ypcfrveVT_DD6Kfmm6njcV_fED0ImrIENpni0ZHA/exec?gid=0';
-      
-      const payload = {
+      // Create form data for Google Apps Script
+      const formDataToSend = new FormData();
+      formDataToSend.append('Name', formData.name);
+      formDataToSend.append('Email', formData.email);
+      formDataToSend.append('Service type', formData.service);
+      formDataToSend.append('Client message', formData.message || 'No message provided');
+
+      console.log('Sending form data to webhook:', {
         Name: formData.name,
         Email: formData.email,
-        "Service type": formData.service,
-        "Client message": formData.message || 'No message provided'
-      };
+        'Service type': formData.service,
+        'Client message': formData.message || 'No message provided'
+      });
 
-      console.log('Sending JSON payload to webhook:', payload);
+      const webhookUrl = 'https://script.google.com/macros/s/AKfycbwGkNL6TRQPCbbdpxoRtdhu2jP5V_ypcfrveVT_DD6Kfmm6njcV_fED0ImrIENpni0ZHA/exec?gid=0';
 
       const response = await fetch(webhookUrl, {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        mode: 'no-cors',
-        body: JSON.stringify(payload),
+        body: formDataToSend,
       });
+
+      console.log('Response status:', response.status);
+      console.log('Response ok:', response.ok);
+
+      if (response.ok) {
+        const responseText = await response.text();
+        console.log('Response text:', responseText);
+      }
 
       toast({
         title: "Message sent!",
