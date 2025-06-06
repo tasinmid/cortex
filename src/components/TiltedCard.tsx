@@ -4,9 +4,9 @@ import { motion, useMotionValue, useSpring } from "framer-motion";
 import "./TiltedCard.css";
 
 const springValues = {
-  damping: 30,
-  stiffness: 100,
-  mass: 2,
+  damping: 20,
+  stiffness: 200,
+  mass: 1,
 };
 
 interface TiltedCardProps {
@@ -29,12 +29,12 @@ export default function TiltedCard({
   imageSrc,
   altText = "Tilted card image",
   captionText = "",
-  containerHeight = "300px",
+  containerHeight = "250px",
   containerWidth = "100%",
-  imageHeight = "300px",
-  imageWidth = "300px",
-  scaleOnHover = 1.1,
-  rotateAmplitude = 14,
+  imageHeight = "250px",
+  imageWidth = "100%",
+  scaleOnHover = 1.05,
+  rotateAmplitude = 10,
   showMobileWarning = true,
   showTooltip = true,
   overlayContent = null,
@@ -49,9 +49,9 @@ export default function TiltedCard({
   const scale = useSpring(1, springValues);
   const opacity = useSpring(0);
   const rotateFigcaption = useSpring(0, {
-    stiffness: 350,
-    damping: 30,
-    mass: 1,
+    stiffness: 400,
+    damping: 20,
+    mass: 0.5,
   });
 
   const [lastY, setLastY] = useState(0);
@@ -133,6 +133,10 @@ export default function TiltedCard({
         {displayOverlayContent && overlayContent && (
           <motion.div
             className="tilted-card-overlay"
+            style={{
+              width: imageWidth,
+              height: imageHeight,
+            }}
           >
             {overlayContent}
           </motion.div>

@@ -1,6 +1,7 @@
 
 import React from 'react';
 import TiltedCard from './TiltedCard';
+import SpotlightCard from './SpotlightCard';
 
 interface TiltedServiceCardProps {
   title: string;
@@ -11,17 +12,20 @@ interface TiltedServiceCardProps {
 
 const TiltedServiceCard: React.FC<TiltedServiceCardProps> = ({ title, description, icon, delay = 0 }) => {
   const overlayContent = (
-    <div className="glass-card rounded-lg p-6 h-full w-full flex flex-col justify-center items-center text-center bg-cortex-navy bg-opacity-90 backdrop-blur-md border border-cortex-gray border-opacity-10">
-      <div className="text-cortex-blue mb-4 transition-all duration-300">
+    <SpotlightCard 
+      className="h-full w-full flex flex-col justify-center items-center text-center bg-cortex-navy bg-opacity-90 backdrop-blur-md border border-cortex-gray border-opacity-10"
+      spotlightColor="rgba(59, 130, 246, 0.15)"
+    >
+      <div className="text-cortex-blue mb-4 transition-all duration-200">
         {icon}
       </div>
-      <h3 className="text-xl font-semibold mb-2 text-cortex-white transition-all duration-300">
+      <h3 className="text-lg font-semibold mb-2 text-cortex-white transition-all duration-200">
         {title}
       </h3>
-      <p className="text-cortex-gray transition-all duration-300">
+      <p className="text-cortex-gray text-sm transition-all duration-200">
         {description}
       </p>
-    </div>
+    </SpotlightCard>
   );
 
   return (
@@ -33,16 +37,16 @@ const TiltedServiceCard: React.FC<TiltedServiceCardProps> = ({ title, descriptio
       }}
     >
       <TiltedCard
-        containerHeight="300px"
+        containerHeight="250px"
         containerWidth="100%"
-        imageHeight="300px"
+        imageHeight="250px"
         imageWidth="100%"
         overlayContent={overlayContent}
         displayOverlayContent={true}
         showTooltip={false}
         showMobileWarning={false}
-        scaleOnHover={1.05}
-        rotateAmplitude={10}
+        scaleOnHover={1.03}
+        rotateAmplitude={8}
       />
     </div>
   );
