@@ -27,7 +27,7 @@ const Footer: React.FC = () => {
               <a href="#" className="text-cortex-gray hover:text-cortex-blue transition-colors duration-300">
                 <Instagram size={20} />
               </a>
-              <a href="#" className="text-cortex-gray hover:text-cortex-blue transition-colors duration-300">
+              <a href="mailto:tasinmid@cortex-ai.dev" className="text-cortex-gray hover:text-cortex-blue transition-colors duration-300">
                 <Mail size={20} />
               </a>
             </div>
@@ -56,7 +56,7 @@ const Footer: React.FC = () => {
           <div className="opacity-0 animate-fade-in-up" style={{ animationDelay: '300ms', animationFillMode: 'forwards' }}>
             <h3 className="text-cortex-white font-semibold mb-4">Contact Us</h3>
             <div className="space-y-2">
-              <p className="text-cortex-gray">info@cortex.ai</p>
+              <a href="mailto:tasinmid@cortex-ai.dev" className="text-cortex-gray hover:text-cortex-blue transition-colors duration-300 block">tasinmid@cortex-ai.dev</a>
               <p className="text-cortex-gray">+8801774087180</p>
               <a href="#contact" className="inline-block mt-4 bg-cortex-blue hover:bg-opacity-80 text-white font-medium py-2 px-4 rounded transition-all duration-300">
                 Get in Touch
