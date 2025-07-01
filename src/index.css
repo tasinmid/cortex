@@ -1,3 +1,4 @@
+
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
 @tailwind base;
@@ -35,6 +36,14 @@
     --ring: 222.2 84% 4.9%;
 
     --radius: 0.5rem;
+    
+    /* Cortex Brand Colors */
+    --cortex-black: #000000;
+    --cortex-navy: #001f3f;
+    --cortex-blue: #00aaff;
+    --cortex-teal: #20c997;
+    --cortex-gray: #cccccc;
+    --cortex-white: #ffffff;
   }
 
   .dark {
@@ -79,6 +88,71 @@
   }
 }
 
+/* Enhanced animations */
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-in-left {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fade-in-right {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fade-in-down {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scale-in {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 15px 2px rgba(0, 170, 255, 0.7);
+  }
+  50% {
+    box-shadow: 0 0 25px 5px rgba(0, 170, 255, 0.9);
+  }
+}
+
 /* Custom utility classes */
 @layer utilities {
   .text-shadow {
@@ -97,28 +171,45 @@
     @apply opacity-0;
   }
   
-  .animate-delay-100 {
-    animation-delay: 100ms;
+  /* Animation classes */
+  .animate-fade-in-up {
+    animation: fade-in-up 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    opacity: 0;
   }
   
-  .animate-delay-200 {
-    animation-delay: 200ms;
+  .animate-fade-in-left {
+    animation: fade-in-left 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    opacity: 0;
   }
   
-  .animate-delay-300 {
-    animation-delay: 300ms;
+  .animate-fade-in-right {
+    animation: fade-in-right 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    opacity: 0;
   }
   
-  .animate-delay-400 {
-    animation-delay: 400ms;
+  .animate-fade-in-down {
+    animation: fade-in-down 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    opacity: 0;
   }
   
-  .animate-delay-500 {
-    animation-delay: 500ms;
+  .animate-scale-in {
+    animation: scale-in 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    opacity: 0;
   }
   
-  .animate-delay-600 {
-    animation-delay: 600ms;
+  .animate-pulse-glow {
+    animation: pulse-glow 2s infinite;
+  }
+  
+  /* Background patterns */
+  .bg-hero-pattern {
+    background-image: 
+      radial-gradient(circle at 25% 25%, rgba(0, 170, 255, 0.1) 0%, transparent 50%),
+      radial-gradient(circle at 75% 75%, rgba(32, 201, 151, 0.1) 0%, transparent 50%);
+  }
+  
+  .bg-gradient-radial {
+    background: radial-gradient(ellipse at center, var(--tw-gradient-stops));
   }
   
   /* Animated underline styles */
@@ -140,4 +231,28 @@
   .inner-glow:hover::after {
     @apply opacity-100;
   }
+}
+
+/* Cortex brand color classes */
+@layer utilities {
+  .bg-cortex-black { background-color: var(--cortex-black); }
+  .bg-cortex-navy { background-color: var(--cortex-navy); }
+  .bg-cortex-blue { background-color: var(--cortex-blue); }
+  .bg-cortex-teal { background-color: var(--cortex-teal); }
+  .bg-cortex-gray { background-color: var(--cortex-gray); }
+  .bg-cortex-white { background-color: var(--cortex-white); }
+  
+  .text-cortex-black { color: var(--cortex-black); }
+  .text-cortex-navy { color: var(--cortex-navy); }
+  .text-cortex-blue { color: var(--cortex-blue); }
+  .text-cortex-teal { color: var(--cortex-teal); }
+  .text-cortex-gray { color: var(--cortex-gray); }
+  .text-cortex-white { color: var(--cortex-white); }
+  
+  .border-cortex-black { border-color: var(--cortex-black); }
+  .border-cortex-navy { border-color: var(--cortex-navy); }
+  .border-cortex-blue { border-color: var(--cortex-blue); }
+  .border-cortex-teal { border-color: var(--cortex-teal); }
+  .border-cortex-gray { border-color: var(--cortex-gray); }
+  .border-cortex-white { border-color: var(--cortex-white); }
 }
