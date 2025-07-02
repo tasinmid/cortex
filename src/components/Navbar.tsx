@@ -23,6 +23,7 @@ const Navbar: React.FC = () => {
   
   const navItems = [
     { name: 'Home', href: '#home' },
+    { name: 'About', href: '/about' },
     { name: 'Services', href: '#services' },
     { name: 'Process', href: '#process' },
     { name: 'Testimonials', href: '#testimonials' },
@@ -37,7 +38,7 @@ const Navbar: React.FC = () => {
         <div className="flex items-center justify-between">
           {/* Logo */}
           <a 
-            href="#home" 
+            href="/" 
             className="text-2xl font-bold text-gradient animate-fade-in-down"
           >
             Cortex-AI
