@@ -19,7 +19,8 @@
 .pc-card {
   position: relative;
   width: 100%;
-  height: 100%;
+  height: 600px; /* Increased height */
+  max-height: 600px;
   transform-style: preserve-3d;
   transform: rotateX(var(--rotate-x)) rotateY(var(--rotate-y));
   transition: transform 0.2s ease-out;
@@ -112,18 +113,82 @@
   text-align: left;
 }
 
-.pc-avatar-content {
+.pc-profile-content {
   align-items: center;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  padding: 1rem 0;
 }
 
-.avatar {
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
+.pc-profile-photo {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+.profile-avatar {
+  width: 180px;
+  height: 240px;
+  border-radius: 20px;
   object-fit: cover;
-  margin-bottom: 1rem;
-  border: 2px solid rgba(255, 255, 255, 0.2);
+  border: 3px solid #3b82f6;
+  box-shadow: 
+    0 0 20px rgba(59, 130, 246, 0.4),
+    0 0 40px rgba(59, 130, 246, 0.2),
+    0 0 60px rgba(59, 130, 246, 0.1);
+  transition: all 0.3s ease;
+}
+
+.profile-avatar:hover {
+  box-shadow: 
+    0 0 30px rgba(59, 130, 246, 0.6),
+    0 0 60px rgba(59, 130, 246, 0.3),
+    0 0 90px rgba(59, 130, 246, 0.2);
+  transform: scale(1.02);
+}
+
+.pc-profile-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+}
+
+.pc-name {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: white;
+  margin: 0;
+  background: linear-gradient(135deg, #fff, #3b82f6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.pc-title {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #10b981;
+  margin: 0;
+}
+
+.pc-specialty {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #06b6d4;
+  margin: 0;
+}
+
+.pc-company {
+  font-size: 0.875rem;
+  color: #9ca3af;
+  margin: 0;
+  line-height: 1.4;
 }
 
 .pc-user-info {
@@ -131,11 +196,11 @@
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  margin-top: 1rem;
   padding: 1rem;
   background: rgba(0, 0, 0, 0.2);
   border-radius: 0.75rem;
   backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .pc-user-details {
@@ -180,11 +245,14 @@
   font-size: 0.875rem;
   font-weight: 500;
   cursor: pointer;
-  transition: background-color 0.2s ease;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
 }
 
 .pc-contact-btn:hover {
   background: #2563eb;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(59, 130, 246, 0.4);
 }
 
 .pc-details h3 {
@@ -202,11 +270,66 @@
 
 @media (max-width: 768px) {
   .pc-card {
+    height: 500px;
+    max-height: 500px;
     transform: none !important;
+  }
+  
+  .profile-avatar {
+    width: 140px;
+    height: 180px;
+  }
+  
+  .pc-name {
+    font-size: 1.5rem;
+  }
+  
+  .pc-title {
+    font-size: 1rem;
+  }
+  
+  .pc-specialty {
+    font-size: 0.9rem;
+  }
+  
+  .pc-company {
+    font-size: 0.8rem;
   }
   
   .pc-shine,
   .pc-glare {
     display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .pc-card {
+    height: 450px;
+    max-height: 450px;
+  }
+  
+  .profile-avatar {
+    width: 120px;
+    height: 160px;
+  }
+  
+  .pc-name {
+    font-size: 1.25rem;
+  }
+  
+  .pc-title {
+    font-size: 0.9rem;
+  }
+  
+  .pc-specialty {
+    font-size: 0.8rem;
+  }
+  
+  .pc-company {
+    font-size: 0.75rem;
+  }
+  
+  .pc-inside {
+    padding: 1.5rem;
   }
 }
