@@ -153,6 +153,7 @@ export default {
       },
       fontFamily: {
         sans: ["Inter", "system-ui", "sans-serif"],
+        fredoka: ["Fredoka", "sans-serif"],
       },
     },
   },

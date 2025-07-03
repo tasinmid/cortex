@@ -1,9 +1,23 @@
 
 import React from 'react';
 import { Facebook, Linkedin, Instagram, Mail } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();
+
+  const scrollToSection = (sectionId: string) => {
+    // Navigate to home page first if not already there
+    if (window.location.pathname !== '/') {
+      window.location.href = `/#${sectionId}`;
+      return;
+    }
+    
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
 
   return (
     <footer className="bg-cortex-black py-12 border-t border-cortex-gray border-opacity-10">
@@ -11,7 +25,7 @@ const Footer: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* Logo and Description */}
           <div className="md:col-span-2 opacity-0 animate-fade-in-up" style={{ animationDelay: '100ms', animationFillMode: 'forwards' }}>
-            <a href="#home" className="text-2xl font-bold text-gradient">Cortex-AI</a>
+            <Link to="/" className="text-2xl font-bold text-gradient">Cortex-AI</Link>
             <p className="mt-4 text-cortex-gray">
               Building AI that works for you — 24/7. We help businesses scale smarter through custom chatbots, automation systems, and AI agents.
             </p>
@@ -38,16 +52,42 @@ const Footer: React.FC = () => {
             <h3 className="text-cortex-white font-semibold mb-4">Quick Links</h3>
             <ul className="space-y-2">
               <li>
-                <a href="#services" className="text-cortex-gray hover:text-cortex-white transition-colors duration-300">Services</a>
+                <Link to="/" className="text-cortex-gray hover:text-cortex-white transition-colors duration-300">Home</Link>
               </li>
               <li>
-                <a href="#process" className="text-cortex-gray hover:text-cortex-white transition-colors duration-300">Our Process</a>
+                <Link to="/about" className="text-cortex-gray hover:text-cortex-white transition-colors duration-300">About</Link>
               </li>
               <li>
-                <a href="#testimonials" className="text-cortex-gray hover:text-cortex-white transition-colors duration-300">Testimonials</a>
+                <button 
+                  onClick={() => scrollToSection('services')}
+                  className="text-cortex-gray hover:text-cortex-white transition-colors duration-300 text-left"
+                >
+                  Services
+                </button>
               </li>
               <li>
-                <a href="#contact" className="text-cortex-gray hover:text-cortex-white transition-colors duration-300">Contact</a>
+                <button 
+                  onClick={() => scrollToSection('process')}
+                  className="text-cortex-gray hover:text-cortex-white transition-colors duration-300 text-left"
+                >
+                  Our Process
+                </button>
+              </li>
+              <li>
+                <button 
+                  onClick={() => scrollToSection('testimonials')}
+                  className="text-cortex-gray hover:text-cortex-white transition-colors duration-300 text-left"
+                >
+                  Testimonials
+                </button>
+              </li>
+              <li>
+                <button 
+                  onClick={() => scrollToSection('contact')}
+                  className="text-cortex-gray hover:text-cortex-white transition-colors duration-300 text-left"
+                >
+                  Contact
+                </button>
               </li>
             </ul>
           </div>
@@ -58,9 +98,12 @@ const Footer: React.FC = () => {
             <div className="space-y-2">
               <a href="mailto:Hello@cortex-ai.dev" className="text-cortex-gray hover:text-cortex-blue transition-colors duration-300 block">Hello@cortex-ai.dev</a>
               <p className="text-cortex-gray">+8801774087180</p>
-              <a href="#contact" className="inline-block mt-4 bg-cortex-blue hover:bg-opacity-80 text-white font-medium py-2 px-4 rounded transition-all duration-300">
+              <button 
+                onClick={() => scrollToSection('contact')}
+                className="inline-block mt-4 bg-cortex-blue hover:bg-opacity-80 text-white font-medium py-2 px-4 rounded transition-all duration-300"
+              >
                 Get in Touch
-              </a>
+              </button>
             </div>
           </div>
         </div>

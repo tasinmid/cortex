@@ -1,117 +1,149 @@
 
-import React, { useState, useEffect } from 'react';
-import { useIsMobile } from '@/hooks/use-mobile';
+import React, { useState } from 'react';
 import { Menu, X } from 'lucide-react';
+import { Link, useLocation } from 'react-router-dom';
 
 const Navbar: React.FC = () => {
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const isMobile = useIsMobile();
-  
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
-    };
-    
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  const [isOpen, setIsOpen] = useState(false);
+  const location = useLocation();
 
-  const handleMenuToggle = () => {
-    setIsMenuOpen(!isMenuOpen);
+  const toggleMenu = () => {
+    setIsOpen(!isOpen);
   };
-  
-  const navItems = [
-    { name: 'Home', href: '#home' },
-    { name: 'About', href: '/about' },
-    { name: 'Services', href: '#services' },
-    { name: 'Process', href: '#process' },
-    { name: 'Testimonials', href: '#testimonials' },
-    { name: 'Contact', href: '#contact' }
-  ];
-  
+
+  const isActive = (path: string) => {
+    return location.pathname === path;
+  };
+
+  const scrollToSection = (sectionId: string) => {
+    if (location.pathname !== '/') {
+      // If not on home page, navigate to home first
+      window.location.href = `/#${sectionId}`;
+      return;
+    }
+    
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+    setIsOpen(false);
+  };
+
   return (
-    <header 
-      className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${isScrolled ? 'bg-cortex-black bg-opacity-80 backdrop-blur-md shadow-md' : 'bg-transparent'}`}
-    >
-      <div className="container mx-auto px-6 py-4">
-        <div className="flex items-center justify-between">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-cortex-black bg-opacity-90 backdrop-blur-md">
+      <div className="container mx-auto px-6">
+        <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <a 
-            href="/" 
-            className="text-2xl font-bold text-gradient animate-fade-in-down"
-          >
+          <Link to="/" className="text-2xl font-bold text-gradient">
             Cortex-AI
-          </a>
-          
+          </Link>
+
           {/* Desktop Navigation */}
-          {!isMobile && (
-            <nav className="animate-fade-in-down">
-              <ul className="flex space-x-6">
-                {navItems.map((item) => (
-                  <li key={item.name}>
-                    <a 
-                      href={item.href}
-                      className="text-cortex-gray hover:text-cortex-white transition-colors duration-300 relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-cortex-blue hover:after:w-full after:transition-all after:duration-300"
-                    >
-                      {item.name}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </nav>
-          )}
-          
-          {/* CTA Button */}
-          {!isMobile && (
-            <a 
-              href="#contact" 
-              className="bg-cortex-blue px-6 py-2 rounded text-white font-medium hover:bg-opacity-80 transition-all duration-300 animate-pulse-glow animate-fade-in-down"
+          <div className="hidden md:flex items-center space-x-8">
+            <Link 
+              to="/" 
+              className={`transition-colors duration-300 ${
+                isActive('/') ? 'text-cortex-blue' : 'text-cortex-white hover:text-cortex-blue'
+              }`}
             >
-              Get Started
-            </a>
-          )}
-          
-          {/* Mobile Menu Button */}
-          {isMobile && (
+              Home
+            </Link>
+            <Link 
+              to="/about" 
+              className={`transition-colors duration-300 ${
+                isActive('/about') ? 'text-cortex-blue' : 'text-cortex-white hover:text-cortex-blue'
+              }`}
+            >
+              About
+            </Link>
             <button 
-              onClick={handleMenuToggle}
-              className="text-cortex-white p-2 focus:outline-none animate-fade-in-down"
+              onClick={() => scrollToSection('services')}
+              className="text-cortex-white hover:text-cortex-blue transition-colors duration-300"
             >
-              {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+              Services
             </button>
-          )}
+            <button 
+              onClick={() => scrollToSection('process')}
+              className="text-cortex-white hover:text-cortex-blue transition-colors duration-300"
+            >
+              Process
+            </button>
+            <button 
+              onClick={() => scrollToSection('testimonials')}
+              className="text-cortex-white hover:text-cortex-blue transition-colors duration-300"
+            >
+              Testimonials
+            </button>
+            <button 
+              onClick={() => scrollToSection('contact')}
+              className="bg-cortex-blue hover:bg-opacity-80 text-white font-medium py-2 px-4 rounded transition-all duration-300"
+            >
+              Contact
+            </button>
+          </div>
+
+          {/* Mobile menu button */}
+          <div className="md:hidden">
+            <button
+              onClick={toggleMenu}
+              className="text-cortex-white hover:text-cortex-blue transition-colors duration-300"
+            >
+              {isOpen ? <X size={24} /> : <Menu size={24} />}
+            </button>
+          </div>
         </div>
-        
-        {/* Mobile Menu */}
-        {isMobile && isMenuOpen && (
-          <nav className="mt-4 pb-4 animate-fade-in-up">
-            <ul className="flex flex-col space-y-4">
-              {navItems.map((item) => (
-                <li key={item.name}>
-                  <a 
-                    href={item.href}
-                    className="text-cortex-gray hover:text-cortex-white transition-colors block py-2"
-                    onClick={() => setIsMenuOpen(false)}
-                  >
-                    {item.name}
-                  </a>
-                </li>
-              ))}
-              <li>
-                <a 
-                  href="#contact" 
-                  className="bg-cortex-blue px-6 py-2 rounded text-white font-medium hover:bg-opacity-80 transition-all duration-300 inline-block animate-pulse-glow"
-                  onClick={() => setIsMenuOpen(false)}
-                >
-                  Get Started
-                </a>
-              </li>
-            </ul>
-          </nav>
+
+        {/* Mobile Navigation */}
+        {isOpen && (
+          <div className="md:hidden">
+            <div className="px-2 pt-2 pb-3 space-y-1 bg-cortex-black bg-opacity-95 backdrop-blur-md rounded-lg mt-2">
+              <Link 
+                to="/" 
+                className={`block px-3 py-2 rounded-md transition-colors duration-300 ${
+                  isActive('/') ? 'text-cortex-blue bg-cortex-navy' : 'text-cortex-white hover:text-cortex-blue hover:bg-cortex-navy'
+                }`}
+                onClick={() => setIsOpen(false)}
+              >
+                Home
+              </Link>
+              <Link 
+                to="/about" 
+                className={`block px-3 py-2 rounded-md transition-colors duration-300 ${
+                  isActive('/about') ? 'text-cortex-blue bg-cortex-navy' : 'text-cortex-white hover:text-cortex-blue hover:bg-cortex-navy'
+                }`}
+                onClick={() => setIsOpen(false)}
+              >
+                About
+              </Link>
+              <button 
+                onClick={() => scrollToSection('services')}
+                className="block w-full text-left px-3 py-2 rounded-md text-cortex-white hover:text-cortex-blue hover:bg-cortex-navy transition-colors duration-300"
+              >
+                Services
+              </button>
+              <button 
+                onClick={() => scrollToSection('process')}
+                className="block w-full text-left px-3 py-2 rounded-md text-cortex-white hover:text-cortex-blue hover:bg-cortex-navy transition-colors duration-300"
+              >
+                Process
+              </button>
+              <button 
+                onClick={() => scrollToSection('testimonials')}
+                className="block w-full text-left px-3 py-2 rounded-md text-cortex-white hover:text-cortex-blue hover:bg-cortex-navy transition-colors duration-300"
+              >
+                Testimonials
+              </button>
+              <button 
+                onClick={() => scrollToSection('contact')}
+                className="block w-full text-left px-3 py-2 rounded-md bg-cortex-blue hover:bg-opacity-80 text-white font-medium transition-all duration-300"
+              >
+                Contact
+              </button>
+            </div>
+          </div>
         )}
       </div>
-    </header>
+    </nav>
   );
 };
 
