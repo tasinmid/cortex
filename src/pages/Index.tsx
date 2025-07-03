@@ -1,3 +1,4 @@
+
 import React, { useEffect } from 'react';
 import { useIsMobile } from '@/hooks/use-mobile';
 import Navbar from '@/components/Navbar';
@@ -244,19 +245,26 @@ const Index = () => {
         </div>
       </AnimatedSection>
       
-      {/* Contact Section */}
-      <AnimatedSection id="contact" className="py-20 bg-gradient-to-b from-cortex-navy to-cortex-black">
+      {/* Section Separator */}
+      <div className="bg-gradient-to-b from-cortex-black via-cortex-navy to-cortex-black py-8">
         <div className="container mx-auto px-6">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+          <Separator className="bg-gradient-to-r from-transparent via-cortex-blue to-transparent opacity-30" />
+        </div>
+      </div>
+      
+      {/* Contact Section */}
+      <AnimatedSection id="contact" className="py-24 bg-gradient-to-b from-cortex-black via-cortex-navy to-cortex-black">
+        <div className="container mx-auto px-6">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
             <div>
-              <div className="relative inline-block group mb-4 opacity-0 animate-fade-in-left" style={{ animationDelay: '100ms', animationFillMode: 'forwards' }}>
+              <div className="relative inline-block group mb-6 opacity-0 animate-fade-in-left" style={{ animationDelay: '100ms', animationFillMode: 'forwards' }}>
                 <h2 className="text-3xl md:text-4xl font-bold text-shadow">
                   Talk to Us — <span className="text-gradient">Let's Collaborate</span>
                 </h2>
                 <div className="absolute -bottom-2 left-0 w-1/4 h-0.5 bg-cortex-teal transition-all duration-300 group-hover:w-full"></div>
               </div>
               
-              <p className="text-cortex-gray text-lg mb-8 opacity-0 animate-fade-in-left" style={{ animationDelay: '200ms', animationFillMode: 'forwards' }}>
+              <p className="text-cortex-gray text-lg mb-10 opacity-0 animate-fade-in-left" style={{ animationDelay: '200ms', animationFillMode: 'forwards' }}>
                 Ready to transform your business with AI? Get in touch with our team of experts and let's discuss how we can help you achieve your goals.
               </p>
               
