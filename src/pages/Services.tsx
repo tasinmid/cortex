@@ -9,6 +9,7 @@ import { Badge } from '@/components/ui/badge';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { MessageSquare, Zap, Bot, Cog, Wrench, GraduationCap, ArrowRight, CheckCircle, Star } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 
 // Different 3D scenes for each service
 const ServiceScene = ({ type }: { type: string }) => {
@@ -72,7 +73,6 @@ const ServiceCard = ({
   description, 
   features, 
   benefits,
-  pricing,
   sceneType,
   isReversed = false 
 }: {
@@ -81,10 +81,20 @@ const ServiceCard = ({
   description: string;
   features: string[];
   benefits: string[];
-  pricing: string;
   sceneType: string;
   isReversed?: boolean;
 }) => {
+  const navigate = useNavigate();
+
+  const handleGetStarted = () => {
+    navigate('/#contact');
+    setTimeout(() => {
+      const element = document.getElementById('contact');
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
+    }, 100);
+  };
   return (
     <motion.div 
       className={`grid grid-cols-1 lg:grid-cols-2 gap-12 items-center ${isReversed ? 'lg:grid-flow-col-dense' : ''}`}
@@ -126,9 +136,6 @@ const ServiceCard = ({
       {/* Content */}
       <div className={`space-y-6 ${isReversed ? 'lg:col-start-1 lg:row-start-1' : ''}`}>
         <div className="flex items-center gap-4">
-          <Badge variant="secondary" className="bg-cortex-blue/10 text-cortex-blue border-cortex-blue/30">
-            {pricing}
-          </Badge>
           <Badge variant="outline" className="bg-cortex-teal/10 text-cortex-teal border-cortex-teal/30">
             Popular
           </Badge>
@@ -172,7 +179,10 @@ const ServiceCard = ({
           </div>
         </div>
 
-        <Button className="bg-gradient-to-r from-cortex-blue to-cortex-teal hover:from-cortex-blue/80 hover:to-cortex-teal/80 text-white font-medium py-3 px-6 rounded-lg transition-all duration-300 group">
+        <Button 
+          onClick={handleGetStarted}
+          className="bg-gradient-to-r from-cortex-blue to-cortex-teal hover:from-cortex-blue/80 hover:to-cortex-teal/80 text-white font-medium py-3 px-6 rounded-lg transition-all duration-300 group"
+        >
           Get Started
           <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
         </Button>
@@ -196,7 +206,6 @@ const Services: React.FC = () => {
         "Multilingual support and localization"
       ],
       benefits: ["24/7 Availability", "Instant Response", "Cost Reduction", "Lead Generation"],
-      pricing: "From $299/month",
       sceneType: "chatbot"
     },
     {
@@ -212,7 +221,6 @@ const Services: React.FC = () => {
         "Performance tracking and optimization"
       ],
       benefits: ["Unified Experience", "Workflow Efficiency", "Better Targeting", "Increased ROI"],
-      pricing: "From $199/month",
       sceneType: "automation"
     },
     {
@@ -228,7 +236,6 @@ const Services: React.FC = () => {
         "Continuous learning and improvement"
       ],
       benefits: ["Sales Automation", "Lead Quality", "Support Efficiency", "Scalability"],
-      pricing: "From $499/month",
       sceneType: "agent"
     },
     {
@@ -244,7 +251,6 @@ const Services: React.FC = () => {
         "Scalable cloud-based execution"
       ],
       benefits: ["Process Efficiency", "Error Reduction", "Time Savings", "Scalability"],
-      pricing: "From $149/month",
       sceneType: "automation"
     },
     {
@@ -260,7 +266,6 @@ const Services: React.FC = () => {
         "Security and compliance features"
       ],
       benefits: ["Custom Solutions", "System Integration", "Competitive Advantage", "Future-Proof"],
-      pricing: "From $999/month",
       sceneType: "chatbot"
     },
     {
@@ -276,7 +281,6 @@ const Services: React.FC = () => {
         "Strategic consultation and planning"
       ],
       benefits: ["Team Expertise", "System Optimization", "Ongoing Support", "Strategic Growth"],
-      pricing: "From $299/month",
       sceneType: "agent"
     }
   ];

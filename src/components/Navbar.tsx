@@ -72,12 +72,14 @@ const Navbar: React.FC = () => {
             >
               Process
             </Link>
-            <button 
-              onClick={() => scrollToSection('testimonials')}
-              className="text-cortex-white hover:text-cortex-blue transition-colors duration-300"
+            <Link 
+              to="/testimonials" 
+              className={`transition-colors duration-300 ${
+                isActive('/testimonials') ? 'text-cortex-blue' : 'text-cortex-white hover:text-cortex-blue'
+              }`}
             >
               Testimonials
-            </button>
+            </Link>
             <button 
               onClick={() => scrollToSection('contact')}
               className="bg-cortex-blue hover:bg-opacity-80 text-white font-medium py-2 px-4 rounded transition-all duration-300"
@@ -137,12 +139,15 @@ const Navbar: React.FC = () => {
               >
                 Process
               </Link>
-              <button 
-                onClick={() => scrollToSection('testimonials')}
-                className="block w-full text-left px-3 py-2 rounded-md text-cortex-white hover:text-cortex-blue hover:bg-cortex-navy transition-colors duration-300"
+              <Link 
+                to="/testimonials" 
+                className={`block px-3 py-2 rounded-md transition-colors duration-300 ${
+                  isActive('/testimonials') ? 'text-cortex-blue bg-cortex-navy' : 'text-cortex-white hover:text-cortex-blue hover:bg-cortex-navy'
+                }`}
+                onClick={() => setIsOpen(false)}
               >
                 Testimonials
-              </button>
+              </Link>
               <button 
                 onClick={() => scrollToSection('contact')}
                 className="block w-full text-left px-3 py-2 rounded-md bg-cortex-blue hover:bg-opacity-80 text-white font-medium transition-all duration-300"
