@@ -56,12 +56,14 @@ const Navbar: React.FC = () => {
             >
               About
             </Link>
-            <button 
-              onClick={() => scrollToSection('services')}
-              className="text-cortex-white hover:text-cortex-blue transition-colors duration-300"
+            <Link 
+              to="/services" 
+              className={`transition-colors duration-300 ${
+                isActive('/services') ? 'text-cortex-blue' : 'text-cortex-white hover:text-cortex-blue'
+              }`}
             >
               Services
-            </button>
+            </Link>
             <Link 
               to="/process" 
               className={`transition-colors duration-300 ${
@@ -117,12 +119,15 @@ const Navbar: React.FC = () => {
               >
                 About
               </Link>
-              <button 
-                onClick={() => scrollToSection('services')}
-                className="block w-full text-left px-3 py-2 rounded-md text-cortex-white hover:text-cortex-blue hover:bg-cortex-navy transition-colors duration-300"
+              <Link 
+                to="/services" 
+                className={`block px-3 py-2 rounded-md transition-colors duration-300 ${
+                  isActive('/services') ? 'text-cortex-blue bg-cortex-navy' : 'text-cortex-white hover:text-cortex-blue hover:bg-cortex-navy'
+                }`}
+                onClick={() => setIsOpen(false)}
               >
                 Services
-              </button>
+              </Link>
               <Link 
                 to="/process" 
                 className={`block px-3 py-2 rounded-md transition-colors duration-300 ${
