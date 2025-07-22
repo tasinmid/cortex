@@ -1,6 +1,6 @@
 import React, { Suspense } from 'react';
 import { Canvas } from '@react-three/fiber';
-import { OrbitControls, Sphere, MeshDistortMaterial, Float, Text3D, Center } from '@react-three/drei';
+import { OrbitControls, Sphere, MeshDistortMaterial, Float } from '@react-three/drei';
 import { motion } from 'framer-motion';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
@@ -10,20 +10,13 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Separator } from '@/components/ui/separator';
 import { ArrowRight, Brain, Lightbulb, Cog, Rocket, CheckCircle } from 'lucide-react';
 
-// 3D Scene Component
+// Simple 3D Scene Component - Safer fallback
 const ProcessScene = () => {
   return (
-    <Float speed={1.5} rotationIntensity={1} floatIntensity={2}>
-      <Sphere args={[1, 100, 200]} scale={2}>
-        <MeshDistortMaterial
-          color="#00D9FF"
-          attach="material"
-          distort={0.3}
-          speed={1.5}
-          roughness={0}
-        />
-      </Sphere>
-    </Float>
+    <mesh rotation={[0, 0, 0]}>
+      <sphereGeometry args={[1, 32, 32]} />
+      <meshStandardMaterial color="#00D9FF" />
+    </mesh>
   );
 };
 
@@ -55,14 +48,14 @@ const ProcessStepDetailed = ({
       {/* 3D Visualization */}
       <div className={`relative ${isReversed ? 'lg:col-start-2' : ''}`}>
         <div className="h-96 rounded-2xl overflow-hidden bg-gradient-to-br from-cortex-navy/50 to-cortex-black/50 backdrop-blur-sm border border-cortex-blue/20">
-          <Canvas camera={{ position: [0, 0, 5] }}>
-            <ambientLight intensity={0.5} />
-            <pointLight position={[10, 10, 10]} />
-            <Suspense fallback={null}>
+          <Suspense fallback={<div className="flex items-center justify-center h-full text-cortex-blue">Loading 3D Scene...</div>}>
+            <Canvas camera={{ position: [0, 0, 5] }}>
+              <ambientLight intensity={0.5} />
+              <pointLight position={[10, 10, 10]} />
               <ProcessScene />
               <OrbitControls enableZoom={false} enablePan={false} />
-            </Suspense>
-          </Canvas>
+            </Canvas>
+          </Suspense>
         </div>
         
         {/* Floating Number Badge */}
@@ -238,14 +231,14 @@ const Process: React.FC = () => {
               transition={{ duration: 0.8, delay: 0.2 }}
               className="h-96 rounded-2xl overflow-hidden bg-gradient-to-br from-cortex-navy/50 to-cortex-black/50 backdrop-blur-sm border border-cortex-blue/20"
             >
-              <Canvas camera={{ position: [0, 0, 5] }}>
-                <ambientLight intensity={0.5} />
-                <pointLight position={[10, 10, 10]} />
-                <Suspense fallback={null}>
+              <Suspense fallback={<div className="flex items-center justify-center h-full text-cortex-blue">Loading 3D Scene...</div>}>
+                <Canvas camera={{ position: [0, 0, 5] }}>
+                  <ambientLight intensity={0.5} />
+                  <pointLight position={[10, 10, 10]} />
                   <ProcessScene />
                   <OrbitControls enableZoom={false} enablePan={false} />
-                </Suspense>
-              </Canvas>
+                </Canvas>
+              </Suspense>
             </motion.div>
           </div>
         </div>
