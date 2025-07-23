@@ -31,32 +31,55 @@ const About = () => {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start mb-16">
               {/* Left Content */}
               <div className="prose prose-lg max-w-none text-cortex-gray leading-relaxed">
-                <p className="text-xl mb-8">
-                  We're not just another AI agency — we build intelligent systems that save time, cut costs, and grow businesses.
-                </p>
-                
-                <p className="mb-6">
-                  At <span className="text-cortex-blue font-semibold">Cortex-AI</span>, we specialize in automation development, helping companies streamline operations using custom-built AI tools, chatbots, voice assistants, and workflow automations. Whether you're drowning in repetitive tasks, struggling with lead management, or looking to modernize how your team works, we create tailored AI solutions that just make sense.
-                </p>
+                <div className="bg-gradient-to-r from-cortex-navy/40 to-cortex-black/40 rounded-2xl p-8 border border-cortex-blue/20 backdrop-blur-sm">
+                  <p className="text-2xl mb-8 text-cortex-white font-medium leading-relaxed">
+                    We're not just another AI agency — we build <span className="text-gradient font-semibold">intelligent systems</span> that save time, cut costs, and grow businesses.
+                  </p>
+                  
+                  <div className="space-y-6">
+                    <p className="text-lg">
+                      At <span className="text-cortex-blue font-semibold">Cortex-AI</span>, we specialize in automation development, helping companies streamline operations using custom-built AI tools, chatbots, voice assistants, and workflow automations. Whether you're drowning in repetitive tasks, struggling with lead management, or looking to modernize how your team works, we create tailored AI solutions that just make sense.
+                    </p>
 
-                <p className="mb-6">
-                  Founded by a developer who believes in real impact over hype, our mission is simple:
-                </p>
-                
-                <div className="text-center my-8">
-                  <h2 className="text-3xl font-bold text-gradient">Make businesses run smarter.</h2>
+                    <div className="bg-cortex-black/30 rounded-xl p-6 border-l-4 border-cortex-teal">
+                      <p className="text-cortex-teal font-medium mb-2">Our Core Expertise:</p>
+                      <ul className="text-cortex-gray space-y-2">
+                        <li>• <strong className="text-cortex-white">Intelligent Chatbots</strong> - Web, WhatsApp, Instagram automation</li>
+                        <li>• <strong className="text-cortex-white">Workflow Automation</strong> - Flowise, n8n, Botpress, Make.com, Zapier</li>
+                        <li>• <strong className="text-cortex-white">AI Voice Assistants</strong> - Vapi, custom voice solutions</li>
+                        <li>• <strong className="text-cortex-white">Custom AI Tools</strong> - Tailored business automation</li>
+                      </ul>
+                    </div>
+
+                    <p className="text-lg">
+                      Founded by a developer who believes in <span className="text-cortex-teal font-semibold">real impact over hype</span>, our mission goes beyond just delivering technology — we transform how businesses operate, making them more efficient, profitable, and competitive.
+                    </p>
+                    
+                    <div className="text-center my-8 bg-gradient-to-r from-cortex-blue/20 to-cortex-teal/20 rounded-xl p-6">
+                      <h2 className="text-3xl font-bold text-gradient mb-4">Make businesses run smarter.</h2>
+                      <p className="text-cortex-gray">This isn't just our tagline — it's our commitment to every client.</p>
+                    </div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
+                      <div className="bg-cortex-navy/30 rounded-xl p-6">
+                        <h4 className="text-cortex-white font-semibold mb-3">Industries We Serve</h4>
+                        <p className="text-cortex-gray text-sm">Startups • Agencies • E-commerce • Education • Healthcare • Finance • Real Estate • SaaS</p>
+                      </div>
+                      <div className="bg-cortex-navy/30 rounded-xl p-6">
+                        <h4 className="text-cortex-white font-semibold mb-3">What Makes Us Different</h4>
+                        <p className="text-cortex-gray text-sm">Custom solutions • 24/7 reliability • Proven ROI • Ongoing support • No vendor lock-in</p>
+                      </div>
+                    </div>
+
+                    <p className="text-xl font-medium text-cortex-white text-center bg-cortex-black/40 rounded-xl p-6 border border-cortex-blue/20">
+                      No fluff. No complicated jargon. Just smart systems that do the work for you — <span className="text-gradient">24/7</span>.
+                    </p>
+                  </div>
                 </div>
 
-                <p className="mb-6">
-                  From startups to agencies, e-commerce to education — we've helped teams automate everything from customer support to internal workflows using platforms like Flowise, n8n, Botpress, Make.com, Vapi, and more.
-                </p>
-
-                <p className="mb-8 text-xl font-medium text-cortex-white">
-                  No fluff. No complicated jargon. Just smart systems that do the work for you — 24/7.
-                </p>
-
-                <div className="text-center">
-                  <h3 className="text-2xl font-semibold text-cortex-teal mb-4">Let's build something powerful together.</h3>
+                <div className="text-center mt-8">
+                  <h3 className="text-2xl font-semibold text-cortex-teal mb-4 animate-pulse-glow">Let's build something powerful together.</h3>
+                  <p className="text-cortex-gray">Ready to transform your business operations with AI?</p>
                 </div>
               </div>
 

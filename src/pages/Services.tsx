@@ -11,46 +11,117 @@ import { Button } from '@/components/ui/button';
 import { MessageSquare, Zap, Bot, Cog, Wrench, GraduationCap, ArrowRight, CheckCircle, Star } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 
-// Different 3D scenes for each service
+// AI-relevant 3D models for each service
 const ServiceScene = ({ type }: { type: string }) => {
   const getSceneByType = () => {
     switch (type) {
       case 'chatbot':
         return (
           <group>
-            <mesh position={[0, 0, 0]} rotation={[0, Math.PI / 4, 0]}>
-              <boxGeometry args={[1.5, 1.5, 1.5]} />
-              <meshStandardMaterial color="#00D9FF" />
+            {/* Chat bubble main */}
+            <mesh position={[0, 0, 0]} rotation={[0, Math.PI / 6, 0]}>
+              <sphereGeometry args={[1.2, 32, 32]} />
+              <meshStandardMaterial 
+                color="#00D9FF" 
+                emissive="#00D9FF"
+                emissiveIntensity={0.1}
+              />
             </mesh>
-            <mesh position={[2, 1, 0]} rotation={[0, -Math.PI / 4, 0]}>
-              <sphereGeometry args={[0.5, 16, 16]} />
-              <meshStandardMaterial color="#FF6B6B" />
+            {/* Chat bubble tail */}
+            <mesh position={[-0.8, -0.8, 0.3]} rotation={[0, 0, Math.PI / 4]}>
+              <coneGeometry args={[0.3, 0.6, 4]} />
+              <meshStandardMaterial 
+                color="#00D9FF" 
+                emissive="#00D9FF"
+                emissiveIntensity={0.1}
+              />
+            </mesh>
+            {/* Message indicators */}
+            <mesh position={[0.8, 1.2, 0]} rotation={[0, -Math.PI / 4, 0]}>
+              <sphereGeometry args={[0.2, 16, 16]} />
+              <meshStandardMaterial 
+                color="#4ECDC4" 
+                emissive="#4ECDC4"
+                emissiveIntensity={0.3}
+              />
             </mesh>
           </group>
         );
       case 'automation':
         return (
           <group>
+            {/* Gear main */}
             <mesh position={[0, 0, 0]} rotation={[Math.PI / 6, 0, 0]}>
-              <cylinderGeometry args={[1, 1, 2, 8]} />
-              <meshStandardMaterial color="#4ECDC4" />
+              <cylinderGeometry args={[1.2, 1.2, 0.4, 12]} />
+              <meshStandardMaterial 
+                color="#4ECDC4" 
+                emissive="#4ECDC4"
+                emissiveIntensity={0.1}
+                metalness={0.8}
+                roughness={0.2}
+              />
             </mesh>
-            <mesh position={[0, 2, 0]}>
-              <coneGeometry args={[0.5, 1, 6]} />
-              <meshStandardMaterial color="#FFE66D" />
+            {/* Inner gear */}
+            <mesh position={[0, 0, 0]} rotation={[Math.PI / 6, Math.PI / 12, 0]}>
+              <cylinderGeometry args={[0.6, 0.6, 0.5, 8]} />
+              <meshStandardMaterial 
+                color="#FFE66D" 
+                emissive="#FFE66D"
+                emissiveIntensity={0.2}
+                metalness={0.9}
+                roughness={0.1}
+              />
+            </mesh>
+            {/* Circuit connections */}
+            <mesh position={[1.5, 0.5, 0]}>
+              <boxGeometry args={[0.3, 0.1, 0.1]} />
+              <meshStandardMaterial 
+                color="#00D9FF" 
+                emissive="#00D9FF"
+                emissiveIntensity={0.4}
+              />
             </mesh>
           </group>
         );
       case 'agent':
         return (
           <group>
+            {/* AI Brain core */}
             <mesh position={[0, 0, 0]}>
-              <icosahedronGeometry args={[1.2, 1]} />
-              <meshStandardMaterial color="#A8E6CF" />
+              <icosahedronGeometry args={[1.2, 2]} />
+              <meshStandardMaterial 
+                color="#A8E6CF" 
+                emissive="#A8E6CF"
+                emissiveIntensity={0.2}
+                transparent={true}
+                opacity={0.8}
+              />
             </mesh>
-            <mesh position={[1.5, 0.5, 1.5]} rotation={[0, 0, Math.PI / 4]}>
-              <octahedronGeometry args={[0.6, 0]} />
-              <meshStandardMaterial color="#FFB3BA" />
+            {/* Neural connections */}
+            <mesh position={[1.2, 0.8, 0.8]} rotation={[0, 0, Math.PI / 4]}>
+              <octahedronGeometry args={[0.4, 1]} />
+              <meshStandardMaterial 
+                color="#FFB3BA" 
+                emissive="#FFB3BA"
+                emissiveIntensity={0.3}
+              />
+            </mesh>
+            <mesh position={[-1.0, -0.6, 0.6]}>
+              <dodecahedronGeometry args={[0.3, 0]} />
+              <meshStandardMaterial 
+                color="#DDA0DD" 
+                emissive="#DDA0DD"
+                emissiveIntensity={0.3}
+              />
+            </mesh>
+            {/* Data stream */}
+            <mesh position={[0, 1.8, 0]} rotation={[Math.PI / 2, 0, 0]}>
+              <cylinderGeometry args={[0.1, 0.1, 1, 6]} />
+              <meshStandardMaterial 
+                color="#00D9FF" 
+                emissive="#00D9FF"
+                emissiveIntensity={0.5}
+              />
             </mesh>
           </group>
         );
@@ -58,7 +129,11 @@ const ServiceScene = ({ type }: { type: string }) => {
         return (
           <mesh rotation={[0, 0, 0]}>
             <sphereGeometry args={[1, 32, 32]} />
-            <meshStandardMaterial color="#00D9FF" />
+            <meshStandardMaterial 
+              color="#00D9FF" 
+              emissive="#00D9FF"
+              emissiveIntensity={0.1}
+            />
           </mesh>
         );
     }
@@ -105,16 +180,20 @@ const ServiceCard = ({
     >
       {/* 3D Visualization */}
       <div className={`relative ${isReversed ? 'lg:col-start-2' : ''}`}>
-        <div className="h-96 rounded-2xl overflow-hidden bg-gradient-to-br from-cortex-navy/50 to-cortex-black/50 backdrop-blur-sm border border-cortex-blue/20">
+        <div className="h-96 rounded-2xl overflow-hidden bg-gradient-to-br from-cortex-navy/50 to-cortex-black/50 backdrop-blur-sm border border-cortex-blue/20 hover:border-cortex-blue/40 transition-all duration-300 group">
           <Suspense fallback={<div className="flex items-center justify-center h-full text-cortex-blue">Loading 3D Scene...</div>}>
             <Canvas camera={{ position: [0, 0, 5] }}>
-              <ambientLight intensity={0.5} />
-              <pointLight position={[10, 10, 10]} />
-              <pointLight position={[-10, -10, -10]} color="#FF6B6B" intensity={0.3} />
+              <ambientLight intensity={0.3} />
+              <pointLight position={[10, 10, 10]} intensity={0.8} />
+              <pointLight position={[-10, 5, 5]} color="#00D9FF" intensity={0.4} />
+              <pointLight position={[5, -10, 5]} color="#4ECDC4" intensity={0.4} />
               <ServiceScene type={sceneType} />
-              <OrbitControls enableZoom={false} enablePan={false} autoRotate autoRotateSpeed={2} />
+              {/* No OrbitControls - static display only */}
             </Canvas>
           </Suspense>
+          
+          {/* Hover glow effect */}
+          <div className="absolute inset-0 bg-gradient-to-br from-cortex-blue/20 to-cortex-teal/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
         </div>
         
         {/* Service Icon Badge */}
