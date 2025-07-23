@@ -144,8 +144,12 @@ const About = () => {
               
               <div className="bg-cortex-navy/30 rounded-2xl p-8 border border-cortex-blue/20">
                 <div className="text-center mb-8">
-                  <div className="w-24 h-24 rounded-full bg-gradient-to-r from-cortex-blue to-cortex-teal flex items-center justify-center mx-auto mb-4">
-                    <span className="text-white font-bold text-2xl">TH</span>
+                  <div className="w-24 h-24 rounded-full overflow-hidden mx-auto mb-4 ring-2 ring-cortex-blue">
+                    <img 
+                      src="/lovable-uploads/96d1ada4-96f3-47ef-ad5f-defca007b098.png" 
+                      alt="Tahmid Hasan - Founder & CEO" 
+                      className="w-full h-full object-cover"
+                    />
                   </div>
                   <h3 className="text-2xl font-bold text-cortex-white mb-2">Tahmid Hasan</h3>
                   <p className="text-cortex-gray">Founder & CEO, Cortex-AI</p>

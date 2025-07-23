@@ -240,25 +240,65 @@ const Index = () => {
       </AnimatedSection>
       
       {/* Testimonials Section */}
-      <AnimatedSection id="testimonials" className="py-20 bg-cortex-black">
+      <AnimatedSection id="testimonials" className="py-20 bg-gradient-to-br from-cortex-navy via-cortex-black to-cortex-navy">
         <div className="container mx-auto px-6">
           <div className="text-center mb-16">
-            <SectionHeader title="Client Testimonials" gradient="text-gradient" />
+            <SectionHeader title="Client Success Stories" gradient="text-gradient" />
             <p className="text-cortex-gray text-lg max-w-2xl mx-auto">
-              Don't just take our word for it — see what our clients have to say about working with Cortex-AI.
+              Real results from real businesses that transformed their operations with our AI solutions.
             </p>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {testimonials.map((testimonial, index) => (
-              <TestimonialCard
-                key={index}
-                quote={testimonial.quote}
-                author={testimonial.author}
-                position={testimonial.position}
-                delay={index * 150}
-              />
-            ))}
+          <div className="max-w-6xl mx-auto">
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+              {testimonials.map((testimonial, index) => (
+                <div 
+                  key={index}
+                  className="group relative overflow-hidden rounded-2xl bg-gradient-to-br from-cortex-navy/50 to-cortex-black/50 p-8 border border-cortex-blue/20 hover:border-cortex-blue/40 transition-all duration-500 hover:shadow-2xl hover:shadow-cortex-blue/10"
+                  style={{ 
+                    animationDelay: `${index * 150}ms`,
+                    animationFillMode: 'forwards'
+                  }}
+                >
+                  <div className="absolute inset-0 bg-gradient-to-br from-cortex-blue/5 to-cortex-teal/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                  
+                  <div className="relative z-10">
+                    <div className="flex items-start mb-6">
+                      <div className="flex text-cortex-teal">
+                        {[...Array(5)].map((_, i) => (
+                          <svg key={i} className="w-5 h-5 fill-current" viewBox="0 0 20 20">
+                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                          </svg>
+                        ))}
+                      </div>
+                    </div>
+                    
+                    <blockquote className="text-cortex-gray text-lg mb-6 leading-relaxed">
+                      "{testimonial.quote}"
+                    </blockquote>
+                    
+                    <div className="flex items-center">
+                      <div className="w-12 h-12 rounded-full bg-gradient-to-br from-cortex-blue to-cortex-teal flex items-center justify-center text-white font-bold mr-4">
+                        {testimonial.author.split(' ').map(n => n[0]).join('')}
+                      </div>
+                      <div>
+                        <div className="text-cortex-white font-semibold">{testimonial.author}</div>
+                        <div className="text-cortex-gray text-sm">{testimonial.position}</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+            
+            <div className="text-center mt-12">
+              <a 
+                href="/testimonials"
+                className="inline-block bg-cortex-teal hover:bg-opacity-80 text-white font-medium py-3 px-8 rounded-lg transition-all duration-300"
+              >
+                View All Testimonials
+              </a>
+            </div>
           </div>
         </div>
       </AnimatedSection>
