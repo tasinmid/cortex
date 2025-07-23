@@ -32,13 +32,13 @@ const Footer: React.FC = () => {
             
             {/* Social Media */}
             <div className="flex space-x-4 mt-6">
-              <a href="#" className="text-cortex-gray hover:text-cortex-blue transition-colors duration-300">
+              <a href="https://www.facebook.com/people/Cortex-AI/61577954522052/" target="_blank" rel="noopener noreferrer" className="text-cortex-gray hover:text-cortex-blue transition-colors duration-300">
                 <Facebook size={20} />
               </a>
-              <a href="https://www.linkedin.com/in/tahmid-hasan-tasin-b3b6602a4/" target="_blank" rel="noopener noreferrer" className="text-cortex-gray hover:text-cortex-blue transition-colors duration-300">
+              <a href="https://www.linkedin.com/company/107782405" target="_blank" rel="noopener noreferrer" className="text-cortex-gray hover:text-cortex-blue transition-colors duration-300">
                 <Linkedin size={20} />
               </a>
-              <a href="#" className="text-cortex-gray hover:text-cortex-blue transition-colors duration-300">
+              <a href="https://www.instagram.com/cortex_ai_dev/" target="_blank" rel="noopener noreferrer" className="text-cortex-gray hover:text-cortex-blue transition-colors duration-300">
                 <Instagram size={20} />
               </a>
               <a href="mailto:Hello@cortex-ai.dev" className="text-cortex-gray hover:text-cortex-blue transition-colors duration-300">
@@ -58,28 +58,13 @@ const Footer: React.FC = () => {
                 <Link to="/about" className="text-cortex-gray hover:text-cortex-white transition-colors duration-300">About</Link>
               </li>
               <li>
-                <button 
-                  onClick={() => scrollToSection('services')}
-                  className="text-cortex-gray hover:text-cortex-white transition-colors duration-300 text-left"
-                >
-                  Services
-                </button>
+                <Link to="/services" className="text-cortex-gray hover:text-cortex-white transition-colors duration-300">Services</Link>
               </li>
               <li>
-                <button 
-                  onClick={() => scrollToSection('process')}
-                  className="text-cortex-gray hover:text-cortex-white transition-colors duration-300 text-left"
-                >
-                  Our Process
-                </button>
+                <Link to="/process" className="text-cortex-gray hover:text-cortex-white transition-colors duration-300">Process</Link>
               </li>
               <li>
-                <button 
-                  onClick={() => scrollToSection('testimonials')}
-                  className="text-cortex-gray hover:text-cortex-white transition-colors duration-300 text-left"
-                >
-                  Testimonials
-                </button>
+                <Link to="/testimonials" className="text-cortex-gray hover:text-cortex-white transition-colors duration-300">Testimonials</Link>
               </li>
               <li>
                 <button 

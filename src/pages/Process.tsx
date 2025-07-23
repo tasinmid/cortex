@@ -326,6 +326,24 @@ const Process: React.FC = () => {
         </div>
       </AnimatedSection>
 
+      {/* Book a Call Section */}
+      <div className="py-12 bg-cortex-navy">
+        <div className="container mx-auto px-6">
+          <div className="text-center">
+            <h3 className="text-2xl font-bold text-cortex-white mb-4">Ready to Start Your Journey?</h3>
+            <p className="text-cortex-gray mb-6">Schedule a free consultation to begin your AI transformation.</p>
+            <a 
+              href="https://calendly.com/tasinmid/30min" 
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block bg-cortex-blue hover:bg-opacity-80 text-white font-medium py-3 px-8 rounded-lg transition-all duration-300 animate-pulse-glow"
+            >
+              Book a Call
+            </a>
+          </div>
+        </div>
+      </div>
+
       <Footer />
     </div>
   );

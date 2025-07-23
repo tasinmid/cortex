@@ -194,6 +194,15 @@ const Index = () => {
               />
             ))}
           </div>
+          
+          <div className="text-center mt-12">
+            <a 
+              href="/services"
+              className="inline-block bg-cortex-blue hover:bg-opacity-80 text-white font-medium py-3 px-8 rounded-lg transition-all duration-300 animate-pulse-glow"
+            >
+              Discover Services
+            </a>
+          </div>
         </div>
       </AnimatedSection>
       
@@ -217,6 +226,15 @@ const Index = () => {
                 delay={index * 150}
               />
             ))}
+          </div>
+          
+          <div className="text-center mt-12">
+            <a 
+              href="/process"
+              className="inline-block bg-cortex-teal hover:bg-opacity-80 text-white font-medium py-3 px-8 rounded-lg transition-all duration-300"
+            >
+              Learn More
+            </a>
           </div>
         </div>
       </AnimatedSection>
@@ -294,6 +312,24 @@ const Index = () => {
         </div>
       </AnimatedSection>
       
+      {/* Book a Call Section */}
+      <div className="py-12 bg-cortex-navy">
+        <div className="container mx-auto px-6">
+          <div className="text-center">
+            <h3 className="text-2xl font-bold text-cortex-white mb-4">Ready to Transform Your Business?</h3>
+            <p className="text-cortex-gray mb-6">Schedule a free consultation to discuss your AI automation needs.</p>
+            <a 
+              href="https://calendly.com/tasinmid/30min" 
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block bg-cortex-blue hover:bg-opacity-80 text-white font-medium py-3 px-8 rounded-lg transition-all duration-300 animate-pulse-glow"
+            >
+              Book a Call
+            </a>
+          </div>
+        </div>
+      </div>
+
       {/* Footer */}
       <Footer />
     </>
