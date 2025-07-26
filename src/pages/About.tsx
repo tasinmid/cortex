@@ -17,7 +17,7 @@ const About = () => {
       
       {/* About Us Section */}
       <section className="min-h-screen py-20 bg-gradient-to-b from-cortex-navy to-cortex-black">
-        <div className="container mx-auto px-6">
+        <div className="container mx-auto px-4 md:px-6">
           <div className="max-w-6xl mx-auto">
             {/* About Us Header */}
             <div className="text-center mb-16">
@@ -27,77 +27,156 @@ const About = () => {
               <div className="w-24 h-1 bg-cortex-blue mx-auto mb-8"></div>
             </div>
 
-            {/* Main Content Grid */}
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start mb-16">
-              {/* Left Content */}
-              <div className="prose prose-lg max-w-none text-cortex-gray leading-relaxed">
-                <div className="bg-gradient-to-r from-cortex-navy/40 to-cortex-black/40 rounded-2xl p-8 border border-cortex-blue/20 backdrop-blur-sm">
-                  <p className="text-2xl mb-8 text-cortex-white font-medium leading-relaxed">
-                    We're not just another AI agency — we build <span className="text-gradient font-semibold">intelligent systems</span> that save time, cut costs, and grow businesses.
+            {/* Enhanced Main Content */}
+            <div className="space-y-16">
+              {/* Hero Introduction */}
+              <div className="text-center max-w-4xl mx-auto">
+                <div className="bg-gradient-to-r from-cortex-navy/40 to-cortex-black/40 rounded-3xl p-12 border border-cortex-blue/20 backdrop-blur-sm">
+                  <p className="text-3xl md:text-4xl mb-10 text-cortex-white font-medium leading-relaxed">
+                    We're not just another AI agency — we build <span className="text-gradient font-semibold">intelligent systems</span> that save time, cut costs, and transform businesses.
                   </p>
                   
-                  <div className="space-y-6">
-                    <p className="text-lg">
-                      At <span className="text-cortex-blue font-semibold">Cortex-AI</span>, we specialize in automation development, helping companies streamline operations using custom-built AI tools, chatbots, voice assistants, and workflow automations. Whether you're drowning in repetitive tasks, struggling with lead management, or looking to modernize how your team works, we create tailored AI solutions that just make sense.
-                    </p>
-
-                    <div className="bg-cortex-black/30 rounded-xl p-6 border-l-4 border-cortex-teal">
-                      <p className="text-cortex-teal font-medium mb-2">Our Core Expertise:</p>
-                      <ul className="text-cortex-gray space-y-2">
-                        <li>• <strong className="text-cortex-white">Intelligent Chatbots</strong> - Web, WhatsApp, Instagram automation</li>
-                        <li>• <strong className="text-cortex-white">Workflow Automation</strong> - Flowise, n8n, Botpress, Make.com, Zapier</li>
-                        <li>• <strong className="text-cortex-white">AI Voice Assistants</strong> - Vapi, custom voice solutions</li>
-                        <li>• <strong className="text-cortex-white">Custom AI Tools</strong> - Tailored business automation</li>
-                      </ul>
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-10">
+                    <div className="bg-cortex-black/30 rounded-2xl p-6 border border-cortex-blue/10">
+                      <div className="text-4xl font-bold text-gradient mb-2">50+</div>
+                      <p className="text-cortex-gray">Successful Projects</p>
                     </div>
-
-                    <p className="text-lg">
-                      Founded by a developer who believes in <span className="text-cortex-teal font-semibold">real impact over hype</span>, our mission goes beyond just delivering technology — we transform how businesses operate, making them more efficient, profitable, and competitive.
-                    </p>
-                    
-                    <div className="text-center my-8 bg-gradient-to-r from-cortex-blue/20 to-cortex-teal/20 rounded-xl p-6">
-                      <h2 className="text-3xl font-bold text-gradient mb-4">Make businesses run smarter.</h2>
-                      <p className="text-cortex-gray">This isn't just our tagline — it's our commitment to every client.</p>
+                    <div className="bg-cortex-black/30 rounded-2xl p-6 border border-cortex-teal/10">
+                      <div className="text-4xl font-bold text-gradient mb-2">24/7</div>
+                      <p className="text-cortex-gray">System Reliability</p>
                     </div>
-
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
-                      <div className="bg-cortex-navy/30 rounded-xl p-6">
-                        <h4 className="text-cortex-white font-semibold mb-3">Industries We Serve</h4>
-                        <p className="text-cortex-gray text-sm">Startups • Agencies • E-commerce • Education • Healthcare • Finance • Real Estate • SaaS</p>
-                      </div>
-                      <div className="bg-cortex-navy/30 rounded-xl p-6">
-                        <h4 className="text-cortex-white font-semibold mb-3">What Makes Us Different</h4>
-                        <p className="text-cortex-gray text-sm">Custom solutions • 24/7 reliability • Proven ROI • Ongoing support • No vendor lock-in</p>
-                      </div>
+                    <div className="bg-cortex-black/30 rounded-2xl p-6 border border-cortex-blue/10">
+                      <div className="text-4xl font-bold text-gradient mb-2">98%</div>
+                      <p className="text-cortex-gray">Client Satisfaction</p>
                     </div>
-
-                    <p className="text-xl font-medium text-cortex-white text-center bg-cortex-black/40 rounded-xl p-6 border border-cortex-blue/20">
-                      No fluff. No complicated jargon. Just smart systems that do the work for you — <span className="text-gradient">24/7</span>.
-                    </p>
                   </div>
-                </div>
-
-                <div className="text-center mt-8">
-                  <h3 className="text-2xl font-semibold text-cortex-teal mb-4 animate-pulse-glow">Let's build something powerful together.</h3>
-                  <p className="text-cortex-gray">Ready to transform your business operations with AI?</p>
+                  
+                  <div className="text-center bg-gradient-to-r from-cortex-blue/20 to-cortex-teal/20 rounded-2xl p-8">
+                    <h2 className="text-4xl md:text-5xl font-bold text-gradient mb-4">Make businesses run smarter.</h2>
+                    <p className="text-cortex-gray text-lg">This isn't just our tagline — it's our commitment to every client.</p>
+                  </div>
                 </div>
               </div>
 
-              {/* Right Profile Card */}
-              <div className="flex justify-center lg:justify-end">
-                <div className="w-full max-w-sm">
-                  <ProfileCard
-                    name="Tahmid Hasan"
-                    title="Founder and CEO"
-                    handle="tasinmid"
-                    status="Online"
-                    contactText="Contact Me"
-                    avatarUrl="/lovable-uploads/646020aa-5682-4c1a-b753-5dda628dcbd5.png"
-                    showUserInfo={true}
-                    enableTilt={true}
-                    onContactClick={handleContactClick}
-                  />
+              {/* Two Column Layout */}
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-start">
+                {/* Mobile-first Profile Card */}
+                <div className="flex justify-center lg:hidden mb-8">
+                  <div className="w-full max-w-xs">
+                    <ProfileCard
+                      name="Tahmid Hasan"
+                      title="Founder and CEO"
+                      handle="tasinmid"
+                      status="Online"
+                      contactText="Contact Me"
+                      avatarUrl="/lovable-uploads/646020aa-5682-4c1a-b753-5dda628dcbd5.png"
+                      showUserInfo={true}
+                      enableTilt={true}
+                      onContactClick={handleContactClick}
+                    />
+                  </div>
                 </div>
+
+                {/* Left Content */}
+                <div className="space-y-6 lg:space-y-8">
+                  <div className="bg-gradient-to-br from-cortex-navy/50 to-cortex-black/50 rounded-2xl p-6 lg:p-8 border border-cortex-blue/20">
+                    <h3 className="text-xl lg:text-2xl font-bold text-cortex-white mb-4 lg:mb-6">Our Mission</h3>
+                    <p className="text-base lg:text-lg text-cortex-gray mb-4 lg:mb-6 leading-relaxed">
+                      At <span className="text-cortex-blue font-semibold">Cortex-AI</span>, we specialize in automation development, helping companies streamline operations using custom-built AI tools, chatbots, voice assistants, and workflow automations. Whether you're drowning in repetitive tasks, struggling with lead management, or looking to modernize how your team works, we create tailored AI solutions that just make sense.
+                    </p>
+                    
+                    <p className="text-base lg:text-lg text-cortex-gray leading-relaxed">
+                      Founded by a developer who believes in <span className="text-cortex-teal font-semibold">real impact over hype</span>, our mission goes beyond just delivering technology — we transform how businesses operate, making them more efficient, profitable, and competitive.
+                    </p>
+                  </div>
+
+                  <div className="bg-cortex-black/30 rounded-2xl p-6 lg:p-8 border-l-4 border-cortex-teal">
+                    <h4 className="text-cortex-teal font-semibold text-lg lg:text-xl mb-4">Our Core Expertise</h4>
+                    <div className="grid grid-cols-1 gap-4">
+                      <div className="space-y-3">
+                        <div className="flex items-center gap-3">
+                          <div className="w-2 h-2 bg-cortex-blue rounded-full"></div>
+                          <span className="text-cortex-white font-medium text-sm lg:text-base">Intelligent Chatbots</span>
+                        </div>
+                        <p className="text-cortex-gray text-xs lg:text-sm ml-5">Web, WhatsApp, Instagram automation</p>
+                      </div>
+                      <div className="space-y-3">
+                        <div className="flex items-center gap-3">
+                          <div className="w-2 h-2 bg-cortex-teal rounded-full"></div>
+                          <span className="text-cortex-white font-medium text-sm lg:text-base">Workflow Automation</span>
+                        </div>
+                        <p className="text-cortex-gray text-xs lg:text-sm ml-5">Flowise, n8n, Botpress, Make.com, Zapier</p>
+                      </div>
+                      <div className="space-y-3">
+                        <div className="flex items-center gap-3">
+                          <div className="w-2 h-2 bg-cortex-blue rounded-full"></div>
+                          <span className="text-cortex-white font-medium text-sm lg:text-base">AI Voice Assistants</span>
+                        </div>
+                        <p className="text-cortex-gray text-xs lg:text-sm ml-5">Vapi, custom voice solutions</p>
+                      </div>
+                      <div className="space-y-3">
+                        <div className="flex items-center gap-3">
+                          <div className="w-2 h-2 bg-cortex-teal rounded-full"></div>
+                          <span className="text-cortex-white font-medium text-sm lg:text-base">Custom AI Tools</span>
+                        </div>
+                        <p className="text-cortex-gray text-xs lg:text-sm ml-5">Tailored business automation</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Desktop Profile Card */}
+                <div className="hidden lg:flex justify-center lg:justify-start">
+                  <div className="w-full max-w-sm">
+                    <ProfileCard
+                      name="Tahmid Hasan"
+                      title="Founder and CEO"
+                      handle="tasinmid"
+                      status="Online"
+                      contactText="Contact Me"
+                      avatarUrl="/lovable-uploads/646020aa-5682-4c1a-b753-5dda628dcbd5.png"
+                      showUserInfo={true}
+                      enableTilt={true}
+                      onContactClick={handleContactClick}
+                    />
+                  </div>
+                </div>
+              </div>
+
+              {/* Industries & Differentiators */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
+                <div className="bg-cortex-navy/30 rounded-2xl p-6 lg:p-8 border border-cortex-blue/20">
+                  <h4 className="text-cortex-white font-semibold text-lg lg:text-xl mb-4">Industries We Serve</h4>
+                  <div className="flex flex-wrap gap-2 lg:gap-3">
+                    {["Startups", "Agencies", "E-commerce", "Education", "Healthcare", "Finance", "Real Estate", "SaaS"].map((industry, index) => (
+                      <span key={index} className="bg-cortex-blue/20 text-cortex-blue px-2 lg:px-3 py-1 rounded-full text-xs lg:text-sm border border-cortex-blue/30">
+                        {industry}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+                <div className="bg-cortex-navy/30 rounded-2xl p-6 lg:p-8 border border-cortex-teal/20">
+                  <h4 className="text-cortex-white font-semibold text-lg lg:text-xl mb-4">What Makes Us Different</h4>
+                  <div className="flex flex-wrap gap-2 lg:gap-3">
+                    {["Custom solutions", "24/7 reliability", "Proven ROI", "Ongoing support", "No vendor lock-in"].map((feature, index) => (
+                      <span key={index} className="bg-cortex-teal/20 text-cortex-teal px-2 lg:px-3 py-1 rounded-full text-xs lg:text-sm border border-cortex-teal/30">
+                        {feature}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </div>
+
+              {/* Call to Action */}
+              <div className="text-center bg-cortex-black/40 rounded-2xl p-6 lg:p-10 border border-cortex-blue/20">
+                <h3 className="text-2xl lg:text-3xl font-semibold text-cortex-teal mb-4 animate-pulse-glow">Let's build something powerful together.</h3>
+                <p className="text-cortex-gray text-base lg:text-lg mb-6">Ready to transform your business operations with AI?</p>
+                <a 
+                  href="#contact"
+                  className="inline-block bg-cortex-blue hover:bg-opacity-80 text-white font-medium py-3 px-6 lg:px-8 rounded-lg transition-all duration-300 animate-pulse-glow text-sm lg:text-base"
+                >
+                  Start Your Journey
+                </a>
               </div>
             </div>
 
@@ -113,7 +192,7 @@ const About = () => {
               
               <div className="space-y-8 text-cortex-gray">
                 <div className="text-center">
-                  <p className="text-xl font-semibold text-cortex-black mb-2">
+                  <p className="text-xl font-semibold text-cortex-white mb-2">
                     Founder and CEO<br/>
                     AI Specialist
                   </p>

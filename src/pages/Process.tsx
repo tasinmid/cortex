@@ -45,8 +45,8 @@ const ProcessStepDetailed = ({
       transition={{ duration: 0.8, ease: "easeOut" }}
       viewport={{ once: true }}
     >
-      {/* 3D Visualization */}
-      <div className={`relative ${isReversed ? 'lg:col-start-2' : ''}`}>
+      {/* 3D Visualization - Desktop Only */}
+      <div className={`relative ${isReversed ? 'lg:col-start-2' : ''} hidden lg:block`}>
         <div className="h-96 rounded-2xl overflow-hidden bg-gradient-to-br from-cortex-navy/50 to-cortex-black/50 backdrop-blur-sm border border-cortex-blue/20">
           <Suspense fallback={<div className="flex items-center justify-center h-full text-cortex-blue">Loading 3D Scene...</div>}>
             <Canvas camera={{ position: [0, 0, 5] }}>
@@ -229,7 +229,7 @@ const Process: React.FC = () => {
               initial={{ opacity: 0, x: 50 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="h-96 rounded-2xl overflow-hidden bg-gradient-to-br from-cortex-navy/50 to-cortex-black/50 backdrop-blur-sm border border-cortex-blue/20"
+              className="h-96 rounded-2xl overflow-hidden bg-gradient-to-br from-cortex-navy/50 to-cortex-black/50 backdrop-blur-sm border border-cortex-blue/20 hidden lg:block"
             >
               <Suspense fallback={<div className="flex items-center justify-center h-full text-cortex-blue">Loading 3D Scene...</div>}>
                 <Canvas camera={{ position: [0, 0, 5] }}>

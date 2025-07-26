@@ -15,6 +15,8 @@ import TiltedServiceCard from '@/components/TiltedServiceCard';
 
 // Import icons
 import { UserRound, Zap, Bot, Database, BarChart, Wrench } from 'lucide-react';
+import { Canvas } from '@react-three/fiber';
+import { Suspense } from 'react';
 
 const Index = () => {
   const isMobile = useIsMobile();
@@ -107,17 +109,17 @@ const Index = () => {
     {
       quote: "Working with Cortex-AI was a turning point for us. Their AI agent reduced our customer response time by over 80%, and their team was with us every step of the way.",
       author: "Sarah N.",
-      position: "Operations Director, Swift Rentals"
+      position: "Operations Director, Trust Immigration Consultant"
     },
     {
       quote: "Cortex-AI didn't just deliver a chatbot — they created a digital team member. We've streamlined our sales pipeline and improved customer experience across channels.",
       author: "James T.",
-      position: "CEO, UrbanRide Solutions"
+      position: "CEO, Evergrow digital"
     },
     {
       quote: "The automation Cortex built has saved us hundreds of hours. What really impressed me was their long-term support — they actually care.",
       author: "Leila K.",
-      position: "Ecom Manager, FlowWear"
+      position: "Ecom Manager, Wannan car rental agency"
     }
   ];
   
