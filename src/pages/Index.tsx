@@ -14,7 +14,7 @@ import TrustedBy from '@/components/TrustedBy';
 import TiltedServiceCard from '@/components/TiltedServiceCard';
 
 // Import icons
-import { UserRound, Zap, Bot, Database, BarChart, Wrench } from 'lucide-react';
+import { UserRound, Zap, Bot, Database, BarChart, Wrench, FileText, Bell } from 'lucide-react';
 import { Canvas } from '@react-three/fiber';
 import { Suspense } from 'react';
 
@@ -74,6 +74,16 @@ const Index = () => {
       title: "Custom Training & Support",
       description: "Personalized training and ongoing support for your team and AI systems.",
       icon: <BarChart size={48} />
+    },
+    {
+      title: "Automated Reporting",
+      description: "Scheduled data processing and reporting systems that compile information without manual effort.",
+      icon: <FileText size={48} />
+    },
+    {
+      title: "Real-time Notifications",
+      description: "Custom alert systems that notify the right people at the right time when important events occur.",
+      icon: <Bell size={48} />
     }
   ];
   

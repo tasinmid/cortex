@@ -9,7 +9,7 @@ import AnimatedSection from '@/components/AnimatedSection';
 import { Badge } from '@/components/ui/badge';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { MessageSquare, Zap, Bot, Cog, Wrench, GraduationCap, ArrowRight, CheckCircle, Star } from 'lucide-react';
+import { MessageSquare, Zap, Bot, Cog, Wrench, GraduationCap, ArrowRight, CheckCircle, Star, FileText, Bell } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 
 // AI-relevant 3D models for each service
@@ -364,6 +364,36 @@ const Services: React.FC = () => {
       ],
       benefits: ["Team Expertise", "System Optimization", "Ongoing Support", "Strategic Growth"],
       sceneType: "agent"
+    },
+    {
+      icon: FileText,
+      title: "Automated Reporting",
+      description: "Scheduled data processing and reporting systems that compile information without manual effort, providing insights when you need them.",
+      features: [
+        "Automated data collection and processing",
+        "Customizable report templates and formats",
+        "Scheduled delivery to stakeholders",
+        "Real-time dashboard integration",
+        "Multi-source data aggregation",
+        "Visual charts and analytics"
+      ],
+      benefits: ["Time Savings", "Data Accuracy", "Consistent Insights", "Better Decisions"],
+      sceneType: "automation"
+    },
+    {
+      icon: Bell,
+      title: "Real-time Notifications",
+      description: "Custom alert systems that notify the right people at the right time when important events occur, keeping your team informed and responsive.",
+      features: [
+        "Multi-channel notification delivery (Email, SMS, Slack)",
+        "Smart filtering and prioritization",
+        "Escalation rules and workflows",
+        "Custom event triggers and conditions",
+        "Integration with monitoring systems",
+        "Analytics and notification tracking"
+      ],
+      benefits: ["Instant Alerts", "Reduced Response Time", "Better Coordination", "Proactive Management"],
+      sceneType: "chatbot"
     }
   ];
 
