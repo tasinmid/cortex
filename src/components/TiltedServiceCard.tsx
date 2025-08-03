@@ -2,20 +2,35 @@
 import React from 'react';
 import TiltedCard from './TiltedCard';
 import SpotlightCard from './SpotlightCard';
+import { Badge } from './ui/badge';
 
 interface TiltedServiceCardProps {
   title: string;
   description: string;
   icon: React.ReactNode;
   delay?: number;
+  isNew?: boolean;
+  isPopular?: boolean;
 }
 
-const TiltedServiceCard: React.FC<TiltedServiceCardProps> = ({ title, description, icon, delay = 0 }) => {
+const TiltedServiceCard: React.FC<TiltedServiceCardProps> = ({ title, description, icon, delay = 0, isNew, isPopular }) => {
   const overlayContent = (
     <SpotlightCard 
       className="h-full w-full flex flex-col justify-center items-center text-center bg-gray-900 bg-opacity-95 backdrop-blur-md border border-gray-700 border-opacity-30"
       spotlightColor="rgba(59, 130, 246, 0.15)"
     >
+      <div className="absolute top-3 right-3 flex gap-2">
+        {isNew && (
+          <Badge variant="default" className="bg-green-500 text-white text-xs">
+            NEW
+          </Badge>
+        )}
+        {isPopular && (
+          <Badge variant="secondary" className="bg-orange-500 text-white text-xs">
+            POPULAR
+          </Badge>
+        )}
+      </div>
       <div className="text-cortex-blue mb-4 transition-all duration-200">
         {icon}
       </div>

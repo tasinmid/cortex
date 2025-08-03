@@ -9,7 +9,7 @@ import AnimatedSection from '@/components/AnimatedSection';
 import { Badge } from '@/components/ui/badge';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { MessageSquare, Zap, Bot, Cog, Wrench, GraduationCap, ArrowRight, CheckCircle, Star, FileText, Bell } from 'lucide-react';
+import { MessageSquare, Zap, Bot, Cog, Wrench, GraduationCap, ArrowRight, CheckCircle, Star, FileText, Bell, Users } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 
 // AI-relevant 3D models for each service
@@ -150,7 +150,9 @@ const ServiceCard = ({
   features, 
   benefits,
   sceneType,
-  isReversed = false 
+  isReversed = false,
+  isNew = false,
+  isPopular = false
 }: {
   icon: any;
   title: string;
@@ -159,6 +161,8 @@ const ServiceCard = ({
   benefits: string[];
   sceneType: string;
   isReversed?: boolean;
+  isNew?: boolean;
+  isPopular?: boolean;
 }) => {
   const navigate = useNavigate();
 
@@ -216,9 +220,16 @@ const ServiceCard = ({
       {/* Content */}
       <div className={`space-y-6 ${isReversed ? 'lg:col-start-1 lg:row-start-1' : ''}`}>
         <div className="flex items-center gap-4">
-          <Badge variant="outline" className="bg-cortex-teal/10 text-cortex-teal border-cortex-teal/30">
-            Popular
-          </Badge>
+          {isNew && (
+            <Badge variant="default" className="bg-green-500 text-white">
+              NEW
+            </Badge>
+          )}
+          {isPopular && (
+            <Badge variant="outline" className="bg-cortex-teal/10 text-cortex-teal border-cortex-teal/30">
+              Popular
+            </Badge>
+          )}
         </div>
 
         <div>
@@ -394,6 +405,23 @@ const Services: React.FC = () => {
       ],
       benefits: ["Instant Alerts", "Reduced Response Time", "Better Coordination", "Proactive Management"],
       sceneType: "chatbot"
+    },
+    {
+      icon: Users,
+      title: "Multi Agent Employee Team",
+      description: "Coordinated AI agents that work together as a virtual team to handle complex multi-step business processes with intelligent task delegation.",
+      features: [
+        "Multiple specialized AI agents working in coordination",
+        "Intelligent task delegation and workflow management",
+        "Inter-agent communication and collaboration",
+        "Parallel processing for complex operations",
+        "Adaptive team structure based on workload",
+        "Comprehensive performance monitoring"
+      ],
+      benefits: ["Complex Workflow Handling", "Scalable Operations", "24/7 Team Availability", "Consistent Quality"],
+      sceneType: "agent",
+      isNew: true,
+      isPopular: true
     }
   ];
 
@@ -447,6 +475,8 @@ const Services: React.FC = () => {
                 <ServiceCard 
                   {...service} 
                   isReversed={index % 2 !== 0}
+                  isNew={service.isNew}
+                  isPopular={service.isPopular}
                 />
                 {index < services.length - 1 && (
                   <div className="flex justify-center mt-16">

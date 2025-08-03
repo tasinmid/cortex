@@ -14,7 +14,7 @@ import TrustedBy from '@/components/TrustedBy';
 import TiltedServiceCard from '@/components/TiltedServiceCard';
 
 // Import icons
-import { UserRound, Zap, Bot, Database, BarChart, Wrench, FileText, Bell } from 'lucide-react';
+import { UserRound, Zap, Bot, Database, BarChart, Wrench, FileText, Bell, Users } from 'lucide-react';
 import { Canvas } from '@react-three/fiber';
 import { Suspense } from 'react';
 
@@ -48,7 +48,8 @@ const Index = () => {
     {
       title: "Personalized Consultation",
       description: "Web, WhatsApp, and Instagram chatbots that handle customer inquiries 24/7.",
-      icon: <UserRound size={48} />
+      icon: <UserRound size={48} />,
+      isPopular: true
     },
     {
       title: "Channel Automations",
@@ -84,6 +85,13 @@ const Index = () => {
       title: "Real-time Notifications",
       description: "Custom alert systems that notify the right people at the right time when important events occur.",
       icon: <Bell size={48} />
+    },
+    {
+      title: "Multi Agent Employee Team",
+      description: "Coordinated AI agents that work together as a virtual team to handle complex multi-step business processes.",
+      icon: <Users size={48} />,
+      isNew: true,
+      isPopular: true
     }
   ];
   
@@ -196,15 +204,17 @@ const Index = () => {
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {services.map((service, index) => (
-              <TiltedServiceCard 
-                key={index}
-                title={service.title}
-                description={service.description}
-                icon={service.icon}
-                delay={index * 100}
-              />
-            ))}
+                {services.map((service, index) => (
+                  <TiltedServiceCard
+                    key={index}
+                    title={service.title}
+                    description={service.description}
+                    icon={service.icon}
+                    delay={index * 100}
+                    isNew={service.isNew}
+                    isPopular={service.isPopular}
+                  />
+                ))}
           </div>
           
           <div className="text-center mt-12">
